@@ -140,6 +140,8 @@
     background:#fff; border-color:var(--red); box-shadow:0 3px 0 var(--red-deep);
   }
   .opt[aria-checked="true"]::before{opacity:1}
+  .opt[aria-disabled="true"]{opacity:.4; cursor:not-allowed; text-decoration:line-through; background:var(--panel2)}
+  .opt[aria-disabled="true"]:hover{background:var(--panel2)}
   .opt:active{transform:translateY(1px)}
   .opt .lead{font-weight:700; display:block}
   .opt .meta{display:block; font-size:12px; color:var(--ink-soft); margin-top:2px}
@@ -297,13 +299,14 @@
         <p class="narr" data-narr="What time shall we power up?"></p>
         <p class="q">What time do you prefer?</p>
         <div class="menu grid" role="radiogroup" aria-label="Time">
-          <button class="opt center" role="radio" data-radio="time" data-value="063000" data-end="073000" data-label="6:30am">🌅 6:30am</button>
-          <button class="opt center" role="radio" data-radio="time" data-value="070000" data-end="080000" data-label="7:00am">🌅 7:00am</button>
-          <button class="opt center" role="radio" data-radio="time" data-value="073000" data-end="083000" data-label="7:30am">🌅 7:30am</button>
-          <button class="opt center" role="radio" data-radio="time" data-value="160000" data-end="170000" data-label="4:00pm">🌇 4:00pm</button>
-          <button class="opt center" role="radio" data-radio="time" data-value="163000" data-end="173000" data-label="4:30pm">🌇 4:30pm</button>
-          <button class="opt center" role="radio" data-radio="time" data-value="170000" data-end="180000" data-label="5:00pm">🌇 5:00pm</button>
+          <button class="opt center" role="radio" data-radio="time" data-period="am" data-value="063000" data-end="073000" data-label="6:30am">🌅 6:30am</button>
+          <button class="opt center" role="radio" data-radio="time" data-period="am" data-value="070000" data-end="080000" data-label="7:00am">🌅 7:00am</button>
+          <button class="opt center" role="radio" data-radio="time" data-period="am" data-value="073000" data-end="083000" data-label="7:30am">🌅 7:30am</button>
+          <button class="opt center" role="radio" data-radio="time" data-period="pm" data-value="160000" data-end="170000" data-label="4:00pm">🌇 4:00pm</button>
+          <button class="opt center" role="radio" data-radio="time" data-period="pm" data-value="163000" data-end="173000" data-label="4:30pm">🌇 4:30pm</button>
+          <button class="opt center" role="radio" data-radio="time" data-period="pm" data-value="170000" data-end="180000" data-label="5:00pm">🌇 5:00pm</button>
         </div>
+        <p class="hint" id="timeNote" style="display:none">✈️ Afternoons only on Mon 3 Aug — Brian lands in Brisbane after 1:30pm.</p>
         <div class="btnrow"><button class="btn next" data-next disabled>Next ▶</button></div>
         <span class="cursor">▼</span>
       </div>
@@ -436,6 +439,7 @@
     coinEl.textContent = i;
     var narr = screens[step].querySelector(".narr");
     if(narr) typewrite(narr);
+    if(step==="time") applyTimeAvailability();
     if(step==="finish") buildFinish();
     screens[step].scrollIntoView({block:"nearest"});
   }
@@ -462,6 +466,7 @@
   // ----- radio menus -----
   document.querySelectorAll("[data-radio]").forEach(function(opt){
     opt.addEventListener("click", function(){
+      if(opt.getAttribute("aria-disabled")==="true") return;
       var group = opt.dataset.radio;
       document.querySelectorAll('[data-radio="'+group+'"]').forEach(function(o){ o.setAttribute("aria-checked", o===opt ? "true":"false"); });
       answers[group] = opt.dataset.value;
@@ -500,6 +505,22 @@
       nb.disabled = !need;
     }
     else if(step==="preorder") nb.disabled = !answers.preorder;
+  }
+
+  // Mon 3 Aug 2026: mornings unavailable (Brian lands in Brisbane after 1:30pm)
+  function applyTimeAvailability(){
+    var amBlocked = answers.day === "20260803";
+    var note = document.getElementById("timeNote");
+    document.querySelectorAll('[data-radio="time"]').forEach(function(o){
+      var block = amBlocked && o.dataset.period === "am";
+      o.setAttribute("aria-disabled", block ? "true" : "false");
+      if(block && o.getAttribute("aria-checked")==="true"){
+        o.setAttribute("aria-checked","false");
+        answers.time=""; answers.timeEnd=""; answers.timeLabel="";
+      }
+    });
+    if(note) note.style.display = amBlocked ? "block" : "none";
+    refreshNext("time");
   }
 
   // ----- the un-clickable NO button -----
