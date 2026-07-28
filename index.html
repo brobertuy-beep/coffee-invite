@@ -4,7 +4,7 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
 <title>☕ A quest for coffee!</title>
-<meta name="description" content="A Super Mario style coffee-date invitation." />
+<meta name="description" content="A Super Mario style coffee invitation." />
 <meta name="color-scheme" content="light" />
 <meta name="theme-color" content="#5c94fc" />
 <style>
@@ -258,7 +258,7 @@
     <section class="screen" data-step="ask">
       <div class="dialogue">
         <p class="narr" data-narr="Your princess is in another castle... ☕"></p>
-        <p class="q" id="askQ">Will you go on a coffee date with Brian?</p>
+        <p class="q" id="askQ">Will you go for coffee with Brian?</p>
         <p class="hint" id="taunt">&nbsp;</p>
         <div class="btnrow" id="askBtns">
           <button class="btn yes" id="yesBtn">Yes! 💗</button>
@@ -371,7 +371,7 @@
     <!-- 7 · FINISH -->
     <section class="screen" data-step="finish">
       <div class="dialogue">
-        <p class="narr" data-narr="You saved the princess — it's a date! 🎉"></p>
+        <p class="narr" data-narr="You saved the princess — coffee is on! ☕🎉"></p>
         <p class="q" id="finishQ">All set!</p>
         <p class="sub">Tap the button and your answers go straight to Brian as your calendar invite.</p>
         <div class="summary" id="summary"></div>
@@ -399,7 +399,7 @@
       inviteeName = raw;
       document.querySelector('[data-step="ask"] .narr')
         .setAttribute("data-narr","Hey "+raw+" — your coffee awaits! ☕");
-      document.getElementById("askQ").textContent = raw + ", will you go on a coffee date with Brian?";
+      document.getElementById("askQ").textContent = raw + ", will you go for coffee with Brian?";
     }
   }catch(e){}
 
@@ -592,7 +592,7 @@
     }).join("");
 
     var lines = [
-      "☕ Coffee date" + (inviteeName ? " with " + inviteeName : "") + " — answers",
+      "☕ Coffee" + (inviteeName ? " with " + inviteeName : "") + " — answers",
       "",
       "• Day: " + dayLabel,
       "• Time: " + timeLabel,
@@ -624,7 +624,7 @@
     document.getElementById("finishBtn").setAttribute("href", cal);
 
     var mail = "mailto:" + BRIAN_EMAIL
-      + "?subject=" + encodeURIComponent("My answers for our coffee date ☕" + (inviteeName ? " ("+inviteeName+")" : ""))
+      + "?subject=" + encodeURIComponent("My answers for our coffee ☕" + (inviteeName ? " ("+inviteeName+")" : ""))
       + "&body=" + encodeURIComponent(details);
     document.getElementById("mailBtn").setAttribute("href", mail);
   }
