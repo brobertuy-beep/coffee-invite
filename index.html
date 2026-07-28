@@ -1,0 +1,639 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>☕ A quest for coffee!</title>
+<meta name="description" content="A Super Mario style coffee-date invitation." />
+<meta name="color-scheme" content="light" />
+<meta name="theme-color" content="#5c94fc" />
+<style>
+  :root{
+    color-scheme: light;
+    --sky:#5c94fc; --sky2:#7aa8ff;
+    --brick:#c84c0c; --brick2:#e06a1e;
+    --panel:#fff8ec; --panel2:#ffefd4;
+    --ink:#2a1a06; --ink-soft:rgba(42,26,6,.62);
+    --line:#241606;
+    --red:#e52521; --red-deep:#a2140f;
+    --green:#43b047; --green-deep:#2b7c2f;
+    --coin:#fbd000; --coin-deep:#d59a00;
+    --pink:#f06ca0; --pink-deep:#c53f74;
+    --disp: ui-monospace,"Cascadia Mono","Courier New",monospace;
+    --body: system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *{box-sizing:border-box}
+  html,body{margin:0;padding:0;overflow-x:hidden}
+  body{
+    min-height:100dvh;
+    font-family:var(--body);
+    color:var(--ink);
+    background:
+      linear-gradient(180deg,var(--sky) 0%, var(--sky2) 62%, #b7d66a 62%, #7cc24a 100%);
+    display:flex; align-items:center; justify-content:center;
+    padding:16px;
+    padding-left:max(14px, env(safe-area-inset-left));
+    padding-right:max(14px, env(safe-area-inset-right));
+    padding-bottom:max(16px, env(safe-area-inset-bottom));
+  }
+  /* drifting pixel clouds */
+  body::before{
+    content:""; position:fixed; inset:0; pointer-events:none; opacity:.9;
+    background-image:
+      radial-gradient(closest-side, #fff 92%, transparent 96%) ,
+      radial-gradient(closest-side, #fff 92%, transparent 96%),
+      radial-gradient(closest-side, #fff 92%, transparent 96%);
+    background-size:120px 46px, 90px 34px, 150px 54px;
+    background-position:8% 16%, 78% 10%, 60% 30%;
+    background-repeat:no-repeat;
+    opacity:.5;
+  }
+
+  .stage{
+    position:relative;
+    width:100%; max-width:440px;
+    background:linear-gradient(180deg,var(--brick),var(--brick2));
+    border:4px solid var(--line);
+    border-radius:18px;
+    padding:14px;
+    box-shadow:0 10px 0 var(--line), 0 22px 40px rgba(60,30,4,.34);
+  }
+  .stage::after{
+    content:""; position:absolute; inset:6px; border:2px solid rgba(255,255,255,.14);
+    border-radius:12px; pointer-events:none;
+  }
+
+  /* ---- top bar / progress ---- */
+  .topbar{display:flex; align-items:center; gap:10px; margin:2px 4px 12px}
+  .coin{
+    font-family:var(--disp); font-weight:700; font-size:12px; color:#fff;
+    display:flex; align-items:center; gap:4px; text-shadow:0 2px 0 rgba(0,0,0,.35);
+  }
+  .progress{
+    flex:1; height:14px; background:rgba(0,0,0,.22); border:2px solid var(--line);
+    border-radius:10px; overflow:hidden; box-shadow:inset 0 2px 0 rgba(0,0,0,.25);
+  }
+  .progress > span{
+    display:block; height:100%; width:0%;
+    background:linear-gradient(90deg,var(--coin),var(--green));
+    transition:width .45s cubic-bezier(.2,.8,.2,1);
+  }
+  .progress-label{
+    font-family:var(--disp); font-size:10px; letter-spacing:1px;
+    color:#fff; min-width:62px; text-align:right; text-transform:uppercase;
+    text-shadow:0 2px 0 rgba(0,0,0,.35);
+  }
+
+  /* ---- scene / sprite ---- */
+  .scene{
+    height:88px; display:flex; align-items:center; justify-content:center;
+    position:relative; margin-bottom:10px; font-size:44px; line-height:1;
+  }
+  .hero{ animation:bob 1.7s ease-in-out infinite; filter:drop-shadow(0 4px 0 rgba(0,0,0,.25)); }
+  @keyframes bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
+  .spark{position:absolute; font-size:16px; opacity:.9; animation:tw 1.6s ease-in-out infinite}
+  .spark.s1{left:16%; top:8%}
+  .spark.s2{right:18%; top:18%; animation-delay:.5s}
+  .spark.s3{right:28%; bottom:4%; animation-delay:.9s}
+  @keyframes tw{0%,100%{transform:scale(.7);opacity:.35}50%{transform:scale(1.1);opacity:1}}
+
+  /* ---- dialogue box ---- */
+  .dialogue{
+    position:relative; background:var(--panel); color:var(--ink);
+    border:4px solid var(--line); border-radius:14px; padding:16px 16px 18px;
+    box-shadow:0 6px 0 var(--line);
+  }
+  .dialogue::after{
+    content:""; position:absolute; inset:5px; border:2px solid rgba(36,22,6,.16);
+    border-radius:9px; pointer-events:none;
+  }
+  .narr{
+    font-family:var(--disp); font-size:12.5px; line-height:1.5; letter-spacing:.2px;
+    margin:0 0 12px; min-height:1.4em; color:var(--brick);
+  }
+  .q{
+    font-family:var(--disp); font-weight:700; font-size:15px; line-height:1.55;
+    margin:0 0 4px; text-wrap:balance;
+  }
+  .sub{ font-size:13px; color:var(--ink-soft); margin:6px 0 12px; line-height:1.5; }
+  .hint{ font-size:11.5px; color:var(--ink-soft); margin:10px 2px 0; }
+
+  /* ---- menu options ---- */
+  .menu{display:flex; flex-direction:column; gap:9px; margin-top:4px}
+  .menu.grid{display:grid; grid-template-columns:1fr 1fr; gap:9px}
+  .opt{
+    position:relative; text-align:left; cursor:pointer;
+    font-family:var(--body); font-size:14px; color:var(--ink);
+    background:var(--panel2); border:3px solid var(--line); border-radius:11px;
+    padding:11px 12px 11px 30px;
+    transition:transform .08s ease, background .12s ease;
+  }
+  .opt.center{padding-left:12px; text-align:center; font-weight:700}
+  .opt::before{
+    content:"\25B6"; position:absolute; left:10px; top:50%; transform:translateY(-50%);
+    color:var(--red); font-size:11px; opacity:0; transition:opacity .12s ease;
+  }
+  .opt.center::before{content:none}
+  .opt:hover{ background:#fff }
+  .opt:hover::before{opacity:.5}
+  .opt[aria-checked="true"]{
+    background:#fff; border-color:var(--red); box-shadow:0 3px 0 var(--red-deep);
+  }
+  .opt[aria-checked="true"]::before{opacity:1}
+  .opt:active{transform:translateY(1px)}
+  .opt .lead{font-weight:700; display:block}
+  .opt .meta{display:block; font-size:12px; color:var(--ink-soft); margin-top:2px}
+
+  /* text inputs */
+  .field{
+    width:100%; font-family:var(--body); font-size:16px; color:var(--ink);
+    background:#fff; border:3px solid var(--line); border-radius:11px;
+    padding:12px; box-shadow:inset 0 2px 0 rgba(0,0,0,.06);
+  }
+  textarea.field{min-height:80px; resize:vertical}
+  .field:focus{outline:none; border-color:var(--red); box-shadow:0 0 0 3px rgba(229,37,33,.22)}
+
+  /* conditional follow-up block */
+  .followup{display:none; margin-top:12px; padding-top:12px; border-top:2px dashed rgba(36,22,6,.2)}
+  .followup.show{display:block; animation:pop .25s ease}
+
+  /* buttons */
+  .btnrow{display:flex; gap:10px; margin-top:16px; position:relative; min-height:52px; flex-wrap:wrap}
+  .btn{
+    font-family:var(--disp); font-weight:700; font-size:13px; letter-spacing:.4px;
+    cursor:pointer; border:3px solid var(--line); border-radius:12px;
+    padding:13px 16px; color:#fff; background:var(--red);
+    box-shadow:0 5px 0 var(--red-deep); transition:transform .07s ease, box-shadow .07s ease;
+  }
+  .btn:active{transform:translateY(4px); box-shadow:0 1px 0 var(--red-deep)}
+  .btn.next{margin-left:auto}
+  .btn.yes{background:var(--green); box-shadow:0 5px 0 var(--green-deep); font-size:15px; padding:15px 26px}
+  .btn.yes:active{box-shadow:0 1px 0 var(--green-deep)}
+  .btn.no{background:#8a7f70; box-shadow:0 5px 0 #5a5248}
+  .btn:disabled{opacity:.45; cursor:not-allowed; box-shadow:none; transform:none}
+  .btn:focus-visible{outline:3px solid var(--coin); outline-offset:2px}
+  .opt:focus-visible{outline:3px solid var(--coin); outline-offset:2px}
+
+  .cursor{
+    position:absolute; right:12px; bottom:8px; color:var(--red);
+    font-size:12px; animation:blink 1s steps(1) infinite;
+  }
+  @keyframes blink{50%{opacity:0}}
+
+  .screen{display:none}
+  .screen.active{display:block; animation:pop .25s ease}
+  @keyframes pop{from{opacity:0; transform:translateY(6px)}to{opacity:1; transform:none}}
+
+  /* finish summary */
+  .summary{
+    background:var(--panel2); border:3px solid var(--line); border-radius:11px;
+    padding:12px 14px; margin:6px 0 4px; font-size:13px; color:var(--ink); line-height:1.6;
+  }
+  .summary b{font-family:var(--disp); font-size:11px; letter-spacing:.4px; color:var(--brick)}
+  .summary .row{display:flex; gap:8px; padding:5px 0; border-top:1px dashed rgba(36,22,6,.18)}
+  .summary .row:first-of-type{border-top:none}
+  .summary .row .k{flex:0 0 96px; font-weight:700}
+  .cta{
+    display:block; text-align:center; text-decoration:none;
+    font-family:var(--disp); font-weight:700; font-size:13px; letter-spacing:.4px;
+    color:#3a2a06; background:var(--coin); border:3px solid var(--line); border-radius:12px;
+    padding:15px; margin-top:12px; box-shadow:0 5px 0 var(--coin-deep);
+  }
+  .cta.secondary{background:var(--panel); color:var(--ink); font-size:12px; padding:12px; box-shadow:0 5px 0 var(--line)}
+  .cta:active{transform:translateY(4px); box-shadow:0 1px 0 var(--coin-deep)}
+
+  /* reminder notes (statements only) */
+  .notes{display:flex; flex-direction:column; gap:10px; margin-top:6px}
+  .note{
+    display:flex; gap:11px; align-items:flex-start;
+    background:var(--panel2); border:3px solid var(--line); border-radius:11px; padding:11px 12px;
+  }
+  .note .ic{font-size:22px; line-height:1.2}
+  .note .tx{font-size:13.5px; color:var(--ink); line-height:1.5}
+  .note .tx b{display:block; font-family:var(--disp); font-size:12px; margin-bottom:2px}
+
+  .err{color:var(--red-deep); font-size:12px; margin-top:8px; min-height:1em; font-weight:600}
+
+  /* falling coins/hearts */
+  .fall{position:fixed; top:-24px; font-size:20px; pointer-events:none; z-index:50; will-change:transform}
+
+  @media (prefers-reduced-motion: reduce){
+    .hero{animation:none} .spark{animation:none} .cursor{animation:none}
+    .screen.active{animation:none} .followup.show{animation:none}
+  }
+  @media (max-width:380px){
+    .stage{padding:11px} .q{font-size:14px} .menu.grid{gap:7px}
+    .opt{font-size:13.5px}
+  }
+</style>
+</head>
+<body>
+  <main class="stage" id="stage">
+    <div class="topbar">
+      <div class="coin">🪙 <span id="coinCount">0</span></div>
+      <div class="progress"><span id="progressFill"></span></div>
+      <div class="progress-label" id="progressLabel">World 1-1</div>
+    </div>
+
+    <div class="scene">
+      <div class="spark s1">✨</div><div class="spark s2">⭐</div><div class="spark s3">💫</div>
+      <div class="hero" id="hero" aria-hidden="true">☕</div>
+    </div>
+
+    <!-- 0 · EMAIL -->
+    <section class="screen active" data-step="email">
+      <div class="dialogue">
+        <p class="narr" data-narr="Welcome to World 1-1!"></p>
+        <p class="q">First — what's your email?</p>
+        <p class="sub">So Brian can send you a proper calendar invite for our coffee. 💌</p>
+        <input class="field" id="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" />
+        <div class="err" id="emailErr"></div>
+        <div class="btnrow">
+          <button class="btn next" data-next>Start ▶</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 1 · THE ASK -->
+    <section class="screen" data-step="ask">
+      <div class="dialogue">
+        <p class="narr" data-narr="Your princess is in another castle... ☕"></p>
+        <p class="q" id="askQ">Will you go on a coffee date with Brian?</p>
+        <p class="hint" id="taunt">&nbsp;</p>
+        <div class="btnrow" id="askBtns">
+          <button class="btn yes" id="yesBtn">Yes! 💗</button>
+          <button class="btn no" id="noBtn">No</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2 · DAY -->
+    <section class="screen" data-step="day">
+      <div class="dialogue">
+        <p class="narr" data-narr="Pick a level... I mean, a day!"></p>
+        <p class="q">What day suits you?</p>
+        <p class="sub">Anytime between 3–13 August 2026.</p>
+        <div class="menu grid" role="radiogroup" aria-label="Day">
+          <button class="opt center" role="radio" data-radio="day" data-value="20260803" data-label="Monday, 3 August 2026">Mon 3 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260804" data-label="Tuesday, 4 August 2026">Tue 4 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260805" data-label="Wednesday, 5 August 2026">Wed 5 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260806" data-label="Thursday, 6 August 2026">Thu 6 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260807" data-label="Friday, 7 August 2026">Fri 7 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260808" data-label="Saturday, 8 August 2026">Sat 8 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260809" data-label="Sunday, 9 August 2026">Sun 9 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260810" data-label="Monday, 10 August 2026">Mon 10 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260811" data-label="Tuesday, 11 August 2026">Tue 11 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260812" data-label="Wednesday, 12 August 2026">Wed 12 Aug</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20260813" data-label="Thursday, 13 August 2026">Thu 13 Aug</button>
+        </div>
+        <div class="btnrow"><button class="btn next" data-next disabled>Next ▶</button></div>
+        <span class="cursor">▼</span>
+      </div>
+    </section>
+
+    <!-- 3 · TIME -->
+    <section class="screen" data-step="time">
+      <div class="dialogue">
+        <p class="narr" data-narr="What time shall we power up?"></p>
+        <p class="q">What time do you prefer?</p>
+        <div class="menu grid" role="radiogroup" aria-label="Time">
+          <button class="opt center" role="radio" data-radio="time" data-value="063000" data-end="073000" data-label="6:30am">🌅 6:30am</button>
+          <button class="opt center" role="radio" data-radio="time" data-value="070000" data-end="080000" data-label="7:00am">🌅 7:00am</button>
+          <button class="opt center" role="radio" data-radio="time" data-value="073000" data-end="083000" data-label="7:30am">🌅 7:30am</button>
+          <button class="opt center" role="radio" data-radio="time" data-value="160000" data-end="170000" data-label="4:00pm">🌇 4:00pm</button>
+          <button class="opt center" role="radio" data-radio="time" data-value="163000" data-end="173000" data-label="4:30pm">🌇 4:30pm</button>
+          <button class="opt center" role="radio" data-radio="time" data-value="170000" data-end="180000" data-label="5:00pm">🌇 5:00pm</button>
+        </div>
+        <div class="btnrow"><button class="btn next" data-next disabled>Next ▶</button></div>
+        <span class="cursor">▼</span>
+      </div>
+    </section>
+
+    <!-- 4 · PETS -->
+    <section class="screen" data-step="pets">
+      <div class="dialogue">
+        <p class="narr" data-narr="Any little companions at home? 🐾"></p>
+        <p class="q">If you have pets — leave them, or bring them?</p>
+        <div class="menu" role="radiogroup" aria-label="Pets">
+          <button class="opt" role="radio" data-radio="pets" data-value="No pets">🚫🐾 I don't have pets</button>
+          <button class="opt" role="radio" data-radio="pets" data-value="Leave them at home">🏠 Leave them cosy at home</button>
+          <button class="opt" role="radio" data-radio="pets" data-value="Bring them along">🐶 Bring them along!</button>
+        </div>
+
+        <div class="followup" id="petFollow">
+          <p class="q" style="font-size:14px">Since your pet is joining us…</p>
+          <p class="sub">If we can't find a suitable pet-friendly restaurant, are you okay with takeaway coffee instead?</p>
+          <div class="menu grid" role="radiogroup" aria-label="Takeaway coffee">
+            <button class="opt center" role="radio" data-radio="takeaway" data-value="Yes — takeaway is fine">👍 Yes, that's fine</button>
+            <button class="opt center" role="radio" data-radio="takeaway" data-value="Prefer to sit in">🪑 Prefer to sit in</button>
+          </div>
+        </div>
+
+        <div class="btnrow"><button class="btn next" data-next disabled>Next ▶</button></div>
+        <span class="cursor">▼</span>
+      </div>
+    </section>
+
+    <!-- 5 · PRE-ORDER -->
+    <section class="screen" data-step="preorder">
+      <div class="dialogue">
+        <p class="narr" data-narr="Let's skip the queue! ☕"></p>
+        <p class="q">Would you like Brian to pre-order for you?</p>
+        <div class="menu grid" role="radiogroup" aria-label="Pre-order">
+          <button class="opt center" role="radio" data-radio="preorder" data-value="Yes, please pre-order">☕ Yes, please!</button>
+          <button class="opt center" role="radio" data-radio="preorder" data-value="No, I'll order there">🙂 No, I'll order there</button>
+        </div>
+
+        <div class="followup" id="orderFollow">
+          <p class="q" style="font-size:14px">Yay — what's your coffee order?</p>
+          <input class="field" id="coffee" type="text" placeholder="e.g. Oat flat white, 1 sugar ☕" />
+        </div>
+
+        <div class="btnrow"><button class="btn next" data-next disabled>Next ▶</button></div>
+        <span class="cursor">▼</span>
+      </div>
+    </section>
+
+    <!-- 6 · REMINDERS (statements only) -->
+    <section class="screen" data-step="bring">
+      <div class="dialogue">
+        <p class="narr" data-narr="A few things to bring along… 🎒"></p>
+        <p class="q">Little reminders 💗</p>
+        <div class="notes">
+          <div class="note"><span class="ic">😊</span><span class="tx"><b>Your beautiful smile</b>The most important item on the list.</span></div>
+          <div class="note"><span class="ic">😄</span><span class="tx"><b>One of your funniest stories</b>Ready to share over coffee.</span></div>
+          <div class="note"><span class="ic">🌟</span><span class="tx"><b>What you want to be when you grow up</b>Dream big — I want to hear it.</span></div>
+        </div>
+        <div class="btnrow"><button class="btn next" data-next>Got it ▶</button></div>
+      </div>
+    </section>
+
+    <!-- 7 · FINISH -->
+    <section class="screen" data-step="finish">
+      <div class="dialogue">
+        <p class="narr" data-narr="You saved the princess — it's a date! 🎉"></p>
+        <p class="q" id="finishQ">All set!</p>
+        <p class="sub">Tap the button and your answers go straight to Brian as your calendar invite.</p>
+        <div class="summary" id="summary"></div>
+        <a class="cta" id="finishBtn" href="#" target="_blank" rel="noopener">📅 Finish &amp; send to Brian</a>
+        <a class="cta secondary" id="mailBtn" href="#">✉️ …or email your answers instead</a>
+        <p class="hint">Tip: if you're signed into Google, saving the event invites Brian automatically.</p>
+      </div>
+    </section>
+  </main>
+
+<script>
+(function(){
+  "use strict";
+  var BRIAN_EMAIL = "brobert.uy@gmail.com";
+  var TZ = "Australia/Brisbane";
+  var reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // personalise via ?name= (also accepts ?to= or ?invitee=)
+  var inviteeName = "";
+  try{
+    var qs = new URLSearchParams(location.search);
+    var raw = qs.get("name") || qs.get("to") || qs.get("invitee") || "";
+    raw = raw.replace(/[^\p{L}\p{M}\s'.-]/gu,"").trim().slice(0,40);
+    if(raw){
+      inviteeName = raw;
+      document.querySelector('[data-step="ask"] .narr')
+        .setAttribute("data-narr","Hey "+raw+" — your coffee awaits! ☕");
+      document.getElementById("askQ").textContent = raw + ", will you go on a coffee date with Brian?";
+    }
+  }catch(e){}
+
+  // ----- state -----
+  var order = ["email","ask","day","time","pets","preorder","bring","finish"];
+  var labels = {email:"World 1-1",ask:"The Ask",day:"The Day",time:"The Time",pets:"Pets",preorder:"Coffee",bring:"Power-ups",finish:"You win!"};
+  var screens = {};
+  document.querySelectorAll(".screen").forEach(function(s){ screens[s.dataset.step] = s; });
+  var idx = 0;
+  var answers = { email:"", day:"", dayLabel:"", time:"", timeEnd:"", timeLabel:"", pets:"", takeaway:"", preorder:"", coffee:"" };
+
+  var fill = document.getElementById("progressFill");
+  var plabel = document.getElementById("progressLabel");
+  var coinEl = document.getElementById("coinCount");
+
+  function typewrite(el){
+    var full = el.getAttribute("data-narr") || "";
+    if(reduce){ el.textContent = full; return; }
+    el.textContent = ""; var i = 0;
+    clearInterval(el._tw);
+    el._tw = setInterval(function(){
+      el.textContent = full.slice(0, ++i);
+      if(i>=full.length) clearInterval(el._tw);
+    }, 24);
+    el.onclick = function(){ clearInterval(el._tw); el.textContent = full; };
+  }
+
+  function show(i){
+    idx = i;
+    var step = order[i];
+    Object.keys(screens).forEach(function(k){ screens[k].classList.toggle("active", k===step); });
+    fill.style.width = (i/(order.length-1))*100 + "%";
+    plabel.textContent = labels[step];
+    coinEl.textContent = i;
+    var narr = screens[step].querySelector(".narr");
+    if(narr) typewrite(narr);
+    if(step==="finish") buildFinish();
+    screens[step].scrollIntoView({block:"nearest"});
+  }
+  function next(){ if(idx < order.length-1) show(idx+1); }
+
+  // ----- generic NEXT buttons -----
+  document.querySelectorAll("[data-next]").forEach(function(btn){
+    btn.addEventListener("click", function(){
+      var step = order[idx];
+      if(step==="email"){
+        var v = document.getElementById("email").value.trim();
+        var ok = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+        var err = document.getElementById("emailErr");
+        if(!ok){ err.textContent = "Hmm, that email doesn't look right — mind checking it?"; return; }
+        err.textContent = ""; answers.email = v;
+      }
+      if(step==="preorder"){
+        answers.coffee = document.getElementById("coffee").value.trim();
+      }
+      next();
+    });
+  });
+
+  // ----- radio menus -----
+  document.querySelectorAll("[data-radio]").forEach(function(opt){
+    opt.addEventListener("click", function(){
+      var group = opt.dataset.radio;
+      document.querySelectorAll('[data-radio="'+group+'"]').forEach(function(o){ o.setAttribute("aria-checked", o===opt ? "true":"false"); });
+      answers[group] = opt.dataset.value;
+      if(opt.dataset.label) answers[group+"Label"] = opt.dataset.label;
+      if(group==="day"){ answers.dayLabel = opt.dataset.label; }
+      if(group==="time"){ answers.timeEnd = opt.dataset.end; answers.timeLabel = opt.dataset.label; }
+
+      // conditional follow-ups
+      if(group==="pets"){
+        var pf = document.getElementById("petFollow");
+        var bring = opt.dataset.value === "Bring them along";
+        pf.classList.toggle("show", bring);
+        if(!bring) answers.takeaway = "";
+      }
+      if(group==="preorder"){
+        var of = document.getElementById("orderFollow");
+        var yes = opt.dataset.value === "Yes, please pre-order";
+        of.classList.toggle("show", yes);
+        if(!yes){ answers.coffee = ""; document.getElementById("coffee").value=""; }
+      }
+
+      // enable Next when the screen's requirement is met
+      refreshNext(order[idx]);
+    });
+  });
+
+  function refreshNext(step){
+    var scr = screens[step];
+    var nb = scr.querySelector("[data-next]");
+    if(!nb) return;
+    if(step==="day") nb.disabled = !answers.day;
+    else if(step==="time") nb.disabled = !answers.time;
+    else if(step==="pets"){
+      // require a pets choice; if bringing, also require takeaway answer
+      var need = answers.pets && (answers.pets!=="Bring them along" || answers.takeaway);
+      nb.disabled = !need;
+    }
+    else if(step==="preorder") nb.disabled = !answers.preorder;
+  }
+
+  // ----- the un-clickable NO button -----
+  var noBtn = document.getElementById("noBtn");
+  var yesBtn = document.getElementById("yesBtn");
+  var taunt = document.getElementById("taunt");
+  var stage = document.getElementById("stage");
+  var taunts = ["Wrong warp pipe! 🚀","Can't catch me!","Nope! 😜","Try again…","Missed me!","1-UP for Yes! 🍄","😏"];
+  var roamed = false, ti = 0, yesScale = 1;
+
+  function dodge(e){
+    if(e){ e.preventDefault(); e.stopPropagation(); }
+    if(!roamed){
+      var r = noBtn.getBoundingClientRect();
+      noBtn.style.width = r.width + "px"; noBtn.style.height = r.height + "px";
+      noBtn.style.position = "absolute"; noBtn.style.margin = "0";
+      stage.appendChild(noBtn);
+      roamed = true;
+    }
+    var sb = stage.getBoundingClientRect();
+    var bw = noBtn.offsetWidth, bh = noBtn.offsetHeight;
+    var maxX = Math.max(8, sb.width - bw - 12);
+    var maxY = Math.max(8, sb.height - bh - 12);
+    noBtn.style.left = (12 + Math.random()*(maxX-12)) + "px";
+    noBtn.style.top  = (12 + Math.random()*(maxY-12)) + "px";
+    taunt.textContent = taunts[ti++ % taunts.length];
+    yesScale = Math.min(1.4, yesScale + 0.05);
+    yesBtn.style.transform = "scale("+yesScale+")";
+  }
+  noBtn.addEventListener("pointerenter", dodge);
+  noBtn.addEventListener("pointerdown", dodge);
+  noBtn.addEventListener("mousedown", dodge);
+  noBtn.addEventListener("touchstart", dodge, {passive:false});
+  noBtn.addEventListener("click", dodge);
+  noBtn.addEventListener("focus", dodge);
+
+  yesBtn.addEventListener("click", function(){
+    coinBurst();
+    setTimeout(next, reduce ? 0 : 560);
+  });
+
+  // ----- falling coins/hearts -----
+  function coinBurst(){
+    if(reduce) return;
+    var emojis = ["🪙","💗","⭐","🍄","✨","☕"];
+    for(var i=0;i<26;i++){
+      (function(){
+        var h = document.createElement("div");
+        h.className = "fall";
+        h.textContent = emojis[Math.floor(Math.random()*emojis.length)];
+        h.style.left = Math.random()*100 + "vw";
+        h.style.fontSize = (14 + Math.random()*18) + "px";
+        document.body.appendChild(h);
+        var dur = 1600 + Math.random()*1600;
+        var drift = (Math.random()*80 - 40);
+        h.animate([
+          {transform:"translate(0,0) rotate(0deg)", opacity:1},
+          {transform:"translate("+drift+"px,"+(window.innerHeight+60)+"px) rotate("+(Math.random()*360)+"deg)", opacity:.9}
+        ], {duration:dur, easing:"cubic-bezier(.3,.6,.4,1)"});
+        setTimeout(function(){ h.remove(); }, dur);
+      })();
+    }
+  }
+
+  // ----- finish: build calendar invite + mailto -----
+  function buildFinish(){
+    var dayLabel = answers.dayLabel || "(day to confirm)";
+    var timeLabel = answers.timeLabel || "(time to confirm)";
+    document.getElementById("finishQ").textContent = "All set for " + dayLabel + " · " + timeLabel;
+
+    var petsText = answers.pets || "—";
+    if(answers.pets === "Bring them along" && answers.takeaway){
+      petsText += " (" + answers.takeaway + ")";
+    }
+    var preText = answers.preorder || "—";
+    if(answers.preorder === "Yes, please pre-order" && answers.coffee){
+      preText = "Yes — order: " + answers.coffee;
+    }
+
+    var rows = [
+      ["Email", answers.email || "—"],
+      ["Day", dayLabel],
+      ["Time", timeLabel],
+      ["Pets", petsText],
+      ["Pre-order", preText]
+    ];
+    var sum = document.getElementById("summary");
+    sum.innerHTML = "<b>Your answers</b>" + rows.map(function(r){
+      return '<div class="row"><span class="k">'+r[0]+'</span><span>'+escapeHtml(r[1])+'</span></div>';
+    }).join("");
+
+    var lines = [
+      "☕ Coffee date" + (inviteeName ? " with " + inviteeName : "") + " — answers",
+      "",
+      "• Day: " + dayLabel,
+      "• Time: " + timeLabel,
+      "• Pets: " + petsText,
+      "• Pre-order: " + preText,
+      "• Email: " + (answers.email || "—"),
+      "",
+      "Reminders to bring:",
+      "😊 Your beautiful smile",
+      "😄 One of your funniest stories",
+      "🌟 What you want to be when you grow up"
+    ];
+    var details = lines.join("\n");
+
+    var dayCode = answers.day || "20260803";
+    var startT = answers.time || "070000";
+    var endT = answers.timeEnd || "080000";
+    var dates = dayCode + "T" + startT + "/" + dayCode + "T" + endT;
+    var guests = BRIAN_EMAIL + (answers.email ? "," + answers.email : "");
+    var title = "☕ Coffee with Brian" + (inviteeName ? " & " + inviteeName : "");
+
+    var cal = "https://calendar.google.com/calendar/render?action=TEMPLATE"
+      + "&text=" + encodeURIComponent(title)
+      + "&dates=" + dates
+      + "&ctz=" + encodeURIComponent(TZ)
+      + "&add=" + encodeURIComponent(guests)
+      + "&details=" + encodeURIComponent(details)
+      + "&location=" + encodeURIComponent("Coffee spot — details to come ☕");
+    document.getElementById("finishBtn").setAttribute("href", cal);
+
+    var mail = "mailto:" + BRIAN_EMAIL
+      + "?subject=" + encodeURIComponent("My answers for our coffee date ☕" + (inviteeName ? " ("+inviteeName+")" : ""))
+      + "&body=" + encodeURIComponent(details);
+    document.getElementById("mailBtn").setAttribute("href", mail);
+  }
+
+  function escapeHtml(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
+
+  // init
+  show(0);
+})();
+</script>
+</body>
+</html>
