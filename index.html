@@ -247,7 +247,7 @@
       <div class="dialogue">
         <p class="narr" data-narr="Welcome to World 1-1!"></p>
         <p class="q">First — what's your email?</p>
-        <p class="sub">So Brian can send you a proper calendar invite for our coffee. 💌</p>
+        <p class="sub">So Brian can send you a proper calendar invite for our catch-up. 💌</p>
         <input class="field" id="email" type="email" inputmode="email" autocomplete="email" placeholder="you@email.com" />
         <div class="err" id="emailErr"></div>
         <div class="btnrow">
@@ -298,6 +298,7 @@
       <div class="dialogue">
         <p class="narr" data-narr="What time shall we power up?"></p>
         <p class="q">What time do you prefer?</p>
+        <p class="sub">Mornings are for coffee ☕ · afternoons are afternoon tea 🫖 (most cafés close early).</p>
         <div class="menu grid" role="radiogroup" aria-label="Time">
           <button class="opt center" role="radio" data-radio="time" data-period="am" data-value="063000" data-end="073000" data-label="6:30am">🌅 6:30am</button>
           <button class="opt center" role="radio" data-radio="time" data-period="am" data-value="070000" data-end="080000" data-label="7:00am">🌅 7:00am</button>
@@ -325,7 +326,7 @@
 
         <div class="followup" id="petFollow">
           <p class="q" style="font-size:14px">Since your pet is joining us…</p>
-          <p class="sub">If we can't find a suitable pet-friendly restaurant, are you okay with takeaway coffee instead?</p>
+          <p class="sub" id="takeawaySub">If we can't find a suitable pet-friendly restaurant, are you okay with takeaway coffee instead?</p>
           <div class="menu grid" role="radiogroup" aria-label="Takeaway coffee">
             <button class="opt center" role="radio" data-radio="takeaway" data-value="Yes — takeaway is fine">👍 Yes, that's fine</button>
             <button class="opt center" role="radio" data-radio="takeaway" data-value="Prefer to sit in">🪑 Prefer to sit in</button>
@@ -341,14 +342,14 @@
     <section class="screen" data-step="preorder">
       <div class="dialogue">
         <p class="narr" data-narr="Let's skip the queue! ☕"></p>
-        <p class="q">Would you like Brian to pre-order for you?</p>
+        <p class="q" id="preorderQ">Would you like Brian to pre-order for you?</p>
         <div class="menu grid" role="radiogroup" aria-label="Pre-order">
-          <button class="opt center" role="radio" data-radio="preorder" data-value="Yes, please pre-order">☕ Yes, please!</button>
+          <button class="opt center" role="radio" data-radio="preorder" data-value="Yes, please pre-order" id="preorderYes">☕ Yes, please!</button>
           <button class="opt center" role="radio" data-radio="preorder" data-value="No, I'll order there">🙂 No, I'll order there</button>
         </div>
 
         <div class="followup" id="orderFollow">
-          <p class="q" style="font-size:14px">Yay — what's your coffee order?</p>
+          <p class="q" style="font-size:14px" id="orderFollowQ">Yay — what's your coffee order?</p>
           <input class="field" id="coffee" type="text" placeholder="e.g. Oat flat white, 1 sugar ☕" />
         </div>
 
@@ -412,7 +413,7 @@
   var screens = {};
   document.querySelectorAll(".screen").forEach(function(s){ screens[s.dataset.step] = s; });
   var idx = 0;
-  var answers = { email:"", day:"", dayLabel:"", time:"", timeEnd:"", timeLabel:"", pets:"", takeaway:"", preorder:"", coffee:"" };
+  var answers = { email:"", day:"", dayLabel:"", time:"", timeEnd:"", timeLabel:"", period:"", pets:"", takeaway:"", preorder:"", coffee:"" };
 
   var fill = document.getElementById("progressFill");
   var plabel = document.getElementById("progressLabel");
@@ -437,10 +438,12 @@
     fill.style.width = (i/(order.length-1))*100 + "%";
     plabel.textContent = labels[step];
     coinEl.textContent = i;
+    if(step==="pets") applyPetsWording();
+    if(step==="preorder") applyPreorderWording();
+    if(step==="finish") buildFinish();
     var narr = screens[step].querySelector(".narr");
     if(narr) typewrite(narr);
     if(step==="time") applyTimeAvailability();
-    if(step==="finish") buildFinish();
     screens[step].scrollIntoView({block:"nearest"});
   }
   function next(){ if(idx < order.length-1) show(idx+1); }
@@ -472,7 +475,7 @@
       answers[group] = opt.dataset.value;
       if(opt.dataset.label) answers[group+"Label"] = opt.dataset.label;
       if(group==="day"){ answers.dayLabel = opt.dataset.label; }
-      if(group==="time"){ answers.timeEnd = opt.dataset.end; answers.timeLabel = opt.dataset.label; }
+      if(group==="time"){ answers.timeEnd = opt.dataset.end; answers.timeLabel = opt.dataset.label; answers.period = opt.dataset.period; }
 
       // conditional follow-ups
       if(group==="pets"){
@@ -521,6 +524,21 @@
     });
     if(note) note.style.display = amBlocked ? "block" : "none";
     refreshNext("time");
+  }
+
+  // Afternoon slots => afternoon tea (cafés close early); mornings => coffee
+  function isPM(){ return answers.period === "pm"; }
+  function applyPetsWording(){
+    document.getElementById("takeawaySub").textContent = isPM()
+      ? "If we can't find a suitable pet-friendly tea spot, are you okay with takeaway afternoon tea instead?"
+      : "If we can't find a suitable pet-friendly restaurant, are you okay with takeaway coffee instead?";
+  }
+  function applyPreorderWording(){
+    var pm = isPM();
+    screens["preorder"].querySelector(".narr").setAttribute("data-narr", pm ? "Let's skip the queue! 🫖" : "Let's skip the queue! ☕");
+    document.getElementById("preorderYes").textContent = pm ? "🫖 Yes, please!" : "☕ Yes, please!";
+    document.getElementById("orderFollowQ").textContent = pm ? "Yay — what's your afternoon tea order?" : "Yay — what's your coffee order?";
+    document.getElementById("coffee").placeholder = pm ? "e.g. English breakfast + a scone 🫖" : "e.g. Oat flat white, 1 sugar ☕";
   }
 
   // ----- the un-clickable NO button -----
@@ -587,6 +605,12 @@
 
   // ----- finish: build calendar invite + mailto -----
   function buildFinish(){
+    var pm = isPM();
+    var kind = pm ? "Afternoon tea" : "Coffee";
+    var kindEmoji = pm ? "🫖" : "☕";
+    screens["finish"].querySelector(".narr").setAttribute("data-narr",
+      "You saved the princess — " + (pm ? "afternoon tea" : "coffee") + " is on! " + kindEmoji + "🎉");
+
     var dayLabel = answers.dayLabel || "(day to confirm)";
     var timeLabel = answers.timeLabel || "(time to confirm)";
     document.getElementById("finishQ").textContent = "All set for " + dayLabel + " · " + timeLabel;
@@ -613,7 +637,7 @@
     }).join("");
 
     var lines = [
-      "☕ Coffee" + (inviteeName ? " with " + inviteeName : "") + " — answers",
+      kindEmoji + " " + kind + (inviteeName ? " with " + inviteeName : "") + " — answers",
       "",
       "• Day: " + dayLabel,
       "• Time: " + timeLabel,
@@ -633,7 +657,7 @@
     var endT = answers.timeEnd || "080000";
     var dates = dayCode + "T" + startT + "/" + dayCode + "T" + endT;
     var guests = BRIAN_EMAIL + (answers.email ? "," + answers.email : "");
-    var title = "☕ Coffee with Brian" + (inviteeName ? " & " + inviteeName : "");
+    var title = kindEmoji + " " + kind + " with Brian" + (inviteeName ? " & " + inviteeName : "");
 
     var cal = "https://calendar.google.com/calendar/render?action=TEMPLATE"
       + "&text=" + encodeURIComponent(title)
@@ -641,11 +665,11 @@
       + "&ctz=" + encodeURIComponent(TZ)
       + "&add=" + encodeURIComponent(guests)
       + "&details=" + encodeURIComponent(details)
-      + "&location=" + encodeURIComponent("Coffee spot — details to come ☕");
+      + "&location=" + encodeURIComponent((pm ? "Tea spot" : "Coffee spot") + " — details to come " + kindEmoji);
     document.getElementById("finishBtn").setAttribute("href", cal);
 
     var mail = "mailto:" + BRIAN_EMAIL
-      + "?subject=" + encodeURIComponent("My answers for our coffee ☕" + (inviteeName ? " ("+inviteeName+")" : ""))
+      + "?subject=" + encodeURIComponent("My answers for our " + kind.toLowerCase() + " " + kindEmoji + (inviteeName ? " ("+inviteeName+")" : ""))
       + "&body=" + encodeURIComponent(details);
     document.getElementById("mailBtn").setAttribute("href", mail);
   }
