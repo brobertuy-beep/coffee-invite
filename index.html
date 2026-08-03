@@ -274,7 +274,8 @@
       <div class="dialogue">
         <p class="narr" data-narr="Pick a level... I mean, a day!"></p>
         <p class="q">What day suits you?</p>
-        <p class="sub">Anytime between 3–13 August 2026.</p>
+        <p class="sub" id="daySub">Any upcoming day, 3–13 August 2026.</p>
+        <p class="sub" id="dayEmpty" style="display:none">🍂 Aw — the 3–13 August window has wrapped up. Text Brian back and you two can pick a fresh time! ☕</p>
         <div class="menu grid" role="radiogroup" aria-label="Day">
           <button class="opt center" role="radio" data-radio="day" data-value="20260803" data-label="Monday, 3 August 2026">Mon 3 Aug</button>
           <button class="opt center" role="radio" data-radio="day" data-value="20260804" data-label="Tuesday, 4 August 2026">Tue 4 Aug</button>
@@ -510,19 +511,73 @@
     else if(step==="preorder") nb.disabled = !answers.preorder;
   }
 
-  // Mon 3 Aug 2026: mornings unavailable (Brian lands in Brisbane after 1:30pm)
+  // ----- live availability (Brisbane clock) -----
+  // "now" in Brisbane as {ymd:"YYYYMMDD", hms:"HHMMSS"} for zero-padded string compares
+  function nowBrisbane(){
+    var p = {};
+    new Intl.DateTimeFormat('en-GB', {timeZone:TZ, hour12:false,
+      year:'numeric', month:'2-digit', day:'2-digit',
+      hour:'2-digit', minute:'2-digit', second:'2-digit'})
+      .formatToParts(new Date()).forEach(function(x){ p[x.type] = x.value; });
+    var hh = (p.hour === '24') ? '00' : p.hour;
+    return { ymd: p.year + p.month + p.day, hms: hh + p.minute + p.second };
+  }
+  var NOW = nowBrisbane();
+
+  // why a slot is unavailable for a given day: "arrive" (Mon 3 Aug mornings), "past" (already gone today), or null
+  function slotBlocked(dayCode, opt){
+    if(dayCode === "20260803" && opt.dataset.period === "am") return "arrive"; // Brian lands after 1:30pm
+    if(dayCode === NOW.ymd && opt.dataset.value <= NOW.hms) return "past";
+    return null;
+  }
+  function availableCount(dayCode){
+    var n = 0;
+    document.querySelectorAll('[data-radio="time"]').forEach(function(o){ if(!slotBlocked(dayCode, o)) n++; });
+    return n;
+  }
+
+  // hide days that have passed (and today, if all its slots are already gone)
+  function applyDayAvailability(){
+    var anyVisible = false;
+    document.querySelectorAll('[data-radio="day"]').forEach(function(o){
+      var d = o.dataset.value;
+      var visible = (d > NOW.ymd) || (d === NOW.ymd && availableCount(d) > 0);
+      o.style.display = visible ? "" : "none";
+      if(!visible) o.setAttribute("aria-checked","false");
+      if(visible) anyVisible = true;
+    });
+    var menu = document.querySelector('[data-step="day"] .menu');
+    var sub = document.getElementById("daySub");
+    var empty = document.getElementById("dayEmpty");
+    var nextBtn = document.querySelector('[data-step="day"] [data-next]');
+    if(!anyVisible){
+      if(menu) menu.style.display = "none";
+      if(sub) sub.style.display = "none";
+      if(empty) empty.style.display = "block";
+      if(nextBtn) nextBtn.style.display = "none";
+    }
+  }
+
+  // disable time slots that have passed / aren't available for the chosen day
   function applyTimeAvailability(){
-    var amBlocked = answers.day === "20260803";
+    var day = answers.day;
     var note = document.getElementById("timeNote");
+    var arriveBlocked = false, anyPast = false;
     document.querySelectorAll('[data-radio="time"]').forEach(function(o){
-      var block = amBlocked && o.dataset.period === "am";
-      o.setAttribute("aria-disabled", block ? "true" : "false");
-      if(block && o.getAttribute("aria-checked")==="true"){
+      var reason = slotBlocked(day, o);
+      o.setAttribute("aria-disabled", reason ? "true" : "false");
+      if(reason === "arrive") arriveBlocked = true;
+      if(reason === "past") anyPast = true;
+      if(reason && o.getAttribute("aria-checked")==="true"){
         o.setAttribute("aria-checked","false");
-        answers.time=""; answers.timeEnd=""; answers.timeLabel="";
+        answers.time=""; answers.timeEnd=""; answers.timeLabel=""; answers.period="";
       }
     });
-    if(note) note.style.display = amBlocked ? "block" : "none";
+    if(note){
+      if(arriveBlocked){ note.textContent = "✈️ Afternoons only on Mon 3 Aug — Brian lands in Brisbane after 1:30pm."; note.style.display = "block"; }
+      else if(anyPast){ note.textContent = "⏰ Earlier times today have passed — showing what's still open."; note.style.display = "block"; }
+      else { note.style.display = "none"; }
+    }
     refreshNext("time");
   }
 
@@ -677,6 +732,7 @@
   function escapeHtml(s){ return String(s).replace(/[&<>"']/g,function(c){return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c];}); }
 
   // init
+  applyDayAvailability();
   show(0);
 })();
 </script>
