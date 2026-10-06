@@ -349,11 +349,16 @@
       <div class="dialogue">
         <p class="narr" data-narr="Which day shall we wander out?"></p>
         <p class="q">What day suits you?</p>
-        <p class="sub" id="daySub">Fri 6 Nov (evenings) · Sun 8 Nov (from 8am) · 2026</p>
+        <p class="sub" id="daySub">Evenings (after 6pm) 9–13 Nov · from 8am 14–15 Nov · 2026</p>
         <p class="sub" id="dayEmpty" style="display:none">🍃 The spirits have drifted on — those dates have passed. Message Brian and you two can find a new time together.</p>
         <div class="menu grid" role="radiogroup" aria-label="Day">
-          <button class="opt center" role="radio" data-radio="day" data-value="20261106" data-label="Friday, 6 November 2026">Fri 6 Nov</button>
-          <button class="opt center" role="radio" data-radio="day" data-value="20261108" data-label="Sunday, 8 November 2026">Sun 8 Nov</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20261109" data-label="Monday, 9 November 2026">Mon 9 Nov</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20261110" data-label="Tuesday, 10 November 2026">Tue 10 Nov</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20261111" data-label="Wednesday, 11 November 2026">Wed 11 Nov</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20261112" data-label="Thursday, 12 November 2026">Thu 12 Nov</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20261113" data-label="Friday, 13 November 2026">Fri 13 Nov</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20261114" data-label="Saturday, 14 November 2026">Sat 14 Nov</button>
+          <button class="opt center" role="radio" data-radio="day" data-value="20261115" data-label="Sunday, 15 November 2026">Sun 15 Nov</button>
         </div>
         <div class="btnrow"><button class="btn next" data-next disabled>Next ▶</button></div>
         <span class="cursor">▼</span>
@@ -464,8 +469,9 @@
 
   // availability rules per day: min = earliest allowed slot start (HHMMSS); note shown on time screen
   var DAY_RULES = {
-    "20261106": { min:"180000", note:"🌙 Fri 6 Nov is evenings only — from 6pm (Brian's free after then)." },
-    "20261108": { min:"080000", note:"" }
+    "20261109": { min:"180000" }, "20261110": { min:"180000" }, "20261111": { min:"180000" },
+    "20261112": { min:"180000" }, "20261113": { min:"180000" },
+    "20261114": { min:"080000" }, "20261115": { min:"080000" }
   };
 
   var inviteeName = "";
@@ -624,7 +630,7 @@
       }
     });
     if(note){
-      if(windowBlocked && rule.note){ note.textContent = rule.note; note.style.display="block"; }
+      if(windowBlocked){ note.textContent = "🌙 " + (answers.dayLabel || "This day") + " is evenings only — from 6pm (Brian's free after then)."; note.style.display="block"; }
       else if(anyPast){ note.textContent = "⏳ Earlier times today have passed — showing what's still open."; note.style.display="block"; }
       else { note.style.display="none"; }
     }
@@ -709,7 +715,7 @@
       "", "Reminders to bring:", "😊 Your beautiful smile", "😄 One of your funniest stories", "🌟 What you want to be when you grow up"
     ].join("\n");
 
-    var dayCode = answers.day || "20261108", startT = answers.time || "100000", endT = answers.timeEnd || "110000";
+    var dayCode = answers.day || "20261114", startT = answers.time || "100000", endT = answers.timeEnd || "110000";
     var dates = dayCode+"T"+startT+"/"+dayCode+"T"+endT;
     var guests = BRIAN_EMAIL + (answers.email ? ","+answers.email : "");
     var title = m.emoji + " " + m.word + " with Brian" + (inviteeName ? " & " + inviteeName : "");
