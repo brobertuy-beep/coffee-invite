@@ -74,8 +74,60 @@
   .tree .crown{position:absolute; top:0; left:-6px; width:58px; height:46px; background:#4f8a46;
     border-radius:50% 50% 46% 46% / 60% 60% 40% 40%}
   .tree .trunk{position:absolute; bottom:0; left:19px; width:9px; height:30px; background:#6b4a2d; border-radius:3px}
+  .tree.t2{left:17%; bottom:16%; transform:scale(.72); transform-origin:bottom center; opacity:.5}
+  .tree.t3{left:auto; right:19%; bottom:12%; transform:scale(.92); transform-origin:bottom center; opacity:.5}
+  .bush{position:absolute; bottom:13%; left:35%; width:54px; height:26px; background:#55974a; opacity:.5;
+    border-radius:50% 50% 46% 46%/72% 72% 30% 30%}
+  .bush::before,.bush::after{content:""; position:absolute; bottom:0; width:30px; height:20px; background:#55974a; border-radius:50%}
+  .bush::before{left:-10px} .bush::after{right:-10px}
+  .c4{top:6%; right:26%; transform:scale(.8); opacity:.7; animation:drift 110s linear infinite}
 
-  @media (max-width:420px){ .castle,.tree{opacity:.4} }
+  /* grass tufts */
+  .tuft{position:absolute; width:28px; height:20px; background:#4f8f44; opacity:.55;
+    clip-path:polygon(0 100%,7% 45%,15% 100%,26% 22%,37% 100%,50% 36%,62% 100%,73% 25%,85% 100%,93% 48%,100% 100%)}
+  .tuft.ta{left:10%; bottom:7%} .tuft.tb{left:40%; bottom:5%; transform:scale(.8)}
+  .tuft.tc{right:14%; bottom:8%} .tuft.td{right:38%; bottom:5%; transform:scale(.7)}
+
+  /* fireflies */
+  .firefly{position:absolute; width:5px; height:5px; border-radius:50%;
+    background:radial-gradient(circle,#fff7b0,#ffd84a); box-shadow:0 0 8px 2px rgba(255,216,74,.8); opacity:.8}
+  .firefly.f1{left:12%; bottom:22%; animation:fly 7s ease-in-out infinite}
+  .firefly.f2{left:30%; bottom:18%; animation:fly 9s ease-in-out infinite .6s}
+  .firefly.f3{right:16%; bottom:24%; animation:fly 8s ease-in-out infinite 1.2s}
+  .firefly.f4{right:30%; bottom:16%; animation:fly 10s ease-in-out infinite .3s}
+  @keyframes fly{0%,100%{transform:translate(0,0); opacity:.25}25%{opacity:1}50%{transform:translate(14px,-14px); opacity:.6}75%{transform:translate(-8px,-6px); opacity:1}}
+
+  /* Catbus (My Neighbor Totoro nod) — runs across the hills */
+  .catbus{position:absolute; bottom:20%; left:0; width:172px; height:66px; z-index:0; opacity:.95;
+    animation:catbus-run 30s linear infinite; will-change:transform}
+  @keyframes catbus-run{0%{transform:translateX(-240px)}100%{transform:translateX(calc(100vw + 80px))}}
+  .cb-wrap{position:absolute; inset:0; animation:cb-bob .5s ease-in-out infinite}
+  @keyframes cb-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-2px)}}
+  .cb-body{position:absolute; left:12px; top:8px; width:140px; height:40px; overflow:hidden;
+    background:linear-gradient(180deg,#bc8441,#9c6a30); border-radius:26px; box-shadow:0 3px 6px rgba(60,40,10,.3)}
+  .cb-body::before{content:""; position:absolute; inset:0;
+    background:repeating-linear-gradient(90deg, transparent 0 15px, rgba(92,60,20,.5) 15px 21px)}
+  .cb-windows{position:absolute; top:9px; left:14px; right:34px; height:12px; border-radius:3px;
+    background:repeating-linear-gradient(90deg,#ffd98a 0 13px, transparent 13px 19px); box-shadow:0 0 7px rgba(255,200,90,.6)}
+  .cb-tail{position:absolute; left:-9px; top:16px; width:26px; height:12px; background:#9c6a30; border-radius:10px; transform:rotate(-20deg)}
+  .cb-ear{position:absolute; top:-3px; width:0; height:0; border-left:9px solid transparent; border-right:9px solid transparent; border-bottom:18px solid #a9742f}
+  .cb-ear.l{right:42px} .cb-ear.r{right:18px}
+  .cb-eye{position:absolute; top:14px; width:12px; height:12px; border-radius:50%;
+    background:radial-gradient(circle,#fff59a,#ffcf1f); box-shadow:0 0 8px 2px rgba(255,205,30,.85)}
+  .cb-eye i{position:absolute; top:3px; left:4px; width:3px; height:6px; background:#3a2a06; border-radius:2px}
+  .cb-eye.l{right:44px} .cb-eye.r{right:22px}
+  .cb-grin{position:absolute; top:29px; right:20px; width:34px; height:12px; overflow:hidden;
+    background:#fff; border-radius:0 0 16px 16px; box-shadow:inset 0 2px 0 rgba(0,0,0,.08)}
+  .cb-grin::before{content:""; position:absolute; inset:0;
+    background:repeating-linear-gradient(90deg,#fff 0 5px,#cdaa7a 5px 6px)}
+  .cb-leg{position:absolute; bottom:0; width:9px; height:16px; background:#89592a; border-radius:3px 3px 5px 5px;
+    animation:cb-step .4s ease-in-out infinite}
+  .cb-leg.g1{left:22px} .cb-leg.g2{left:44px} .cb-leg.g3{left:66px}
+  .cb-leg.g4{left:90px} .cb-leg.g5{left:112px} .cb-leg.g6{left:132px}
+  .cb-leg.g2,.cb-leg.g4,.cb-leg.g6{animation-delay:.2s}
+  @keyframes cb-step{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+
+  @media (max-width:420px){ .castle,.tree,.bush{opacity:.4} }
 
   /* ---------- card ---------- */
   .stage{
@@ -214,7 +266,7 @@
   .foot{text-align:center; font-size:10.5px; color:var(--ink-soft); margin-top:12px}
 
   @media (prefers-reduced-motion: reduce){
-    .spirit,.soot,.flame,.cloud,.castle .smoke,.cursor{animation:none}
+    .spirit,.soot,.flame,.cloud,.castle .smoke,.cursor,.catbus,.cb-wrap,.cb-leg,.firefly{animation:none}
     .screen.active,.followup.show{animation:none}
   }
   @media (max-width:380px){ .stage{padding:13px} .q{font-size:15px} .menu.grid{gap:7px} .opt{font-size:13.5px} }
@@ -222,10 +274,25 @@
 </head>
 <body>
   <div class="scenery" aria-hidden="true">
-    <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div>
+    <div class="cloud c1"></div><div class="cloud c2"></div><div class="cloud c3"></div><div class="cloud c4"></div>
     <div class="tree"><div class="crown"></div><div class="trunk"></div></div>
+    <div class="tree t2"><div class="crown"></div><div class="trunk"></div></div>
+    <div class="tree t3"><div class="crown"></div><div class="trunk"></div></div>
+    <div class="bush"></div>
     <div class="castle"><div class="smoke"></div><div class="chim"></div><div class="lump"></div><div class="leg l1"></div><div class="leg l2"></div></div>
     <div class="hill hillA"></div><div class="hill hillB"></div><div class="hill hillC"></div>
+    <!-- in front of the hills -->
+    <div class="catbus"><div class="cb-wrap">
+      <div class="cb-tail"></div>
+      <div class="cb-body"><div class="cb-windows"></div></div>
+      <div class="cb-ear l"></div><div class="cb-ear r"></div>
+      <div class="cb-eye l"><i></i></div><div class="cb-eye r"><i></i></div>
+      <div class="cb-grin"></div>
+      <div class="cb-leg g1"></div><div class="cb-leg g2"></div><div class="cb-leg g3"></div>
+      <div class="cb-leg g4"></div><div class="cb-leg g5"></div><div class="cb-leg g6"></div>
+    </div></div>
+    <div class="tuft ta"></div><div class="tuft tb"></div><div class="tuft tc"></div><div class="tuft td"></div>
+    <div class="firefly f1"></div><div class="firefly f2"></div><div class="firefly f3"></div><div class="firefly f4"></div>
   </div>
 
   <main class="stage" id="stage">
