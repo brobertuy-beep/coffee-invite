@@ -161,6 +161,17 @@ header.site.scrolled{border-color:var(--line);box-shadow:0 4px 20px -12px rgba(1
 .callout{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:20px 22px;margin-bottom:28px;font-size:.98rem}
 .callout strong{color:#fff}
 
+/* split bands */
+.split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.split-art img{width:100%;height:auto;max-height:380px;object-fit:contain}
+.big-muted{font-size:1.1rem;color:var(--muted)}
+.ticks.dark li{color:var(--ink)}
+.ticks.dark{margin:20px 0 30px}
+.step-art{width:100%;height:120px;object-fit:contain;margin:0 0 18px}
+.plan-art{width:100%;height:110px;object-fit:contain;margin:0 0 18px}
+.contact-art{margin-top:40px;max-width:300px;background:rgba(255,255,255,.95);border-radius:22px;padding:22px}
+.contact-art img{width:100%;height:auto}
+
 /* steps */
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;counter-reset:s;position:relative}
 .step{position:relative;text-align:left;padding:28px;border-radius:var(--radius);background:#fff;border:1px solid var(--line)}
@@ -305,7 +316,9 @@ footer a:hover{color:var(--orange)}
 }
 @media (max-width:960px){
   .section{padding:72px 0}
-  .hero-grid,.expat-grid,.why-grid,.contact-grid,.about-grid{grid-template-columns:1fr}
+  .hero-grid,.expat-grid,.why-grid,.contact-grid,.about-grid,.split{grid-template-columns:1fr}
+  .split-art{max-width:460px;margin:0 auto}
+  .contact-art{display:none}
   .hero-art{max-width:480px;margin:0 auto}
   .grid-3,.reviews,.team,.pricing{grid-template-columns:1fr 1fr}
   .creds .wrap{grid-template-columns:1fr 1fr;justify-content:stretch}
@@ -483,10 +496,10 @@ footer a:hover{color:var(--orange)}
       </article>
       <article class="card reveal">
         <div class="ic"><svg><use href="#i-chart"/></svg></div>
-        <h3>Software and tax planning</h3>
-        <p>Xero Certified Advisor support and custom-built tools, plus timely tax-saving guidance.</p>
-        <ul><li>Xero setup and clean-up</li><li>Custom-built software</li><li>Pre-30 June tax planning</li></ul>
-        <a class="card-link" href="#contact" data-service="Xero, software and tax planning">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        <h3>Xero and tax planning</h3>
+        <p>Xero Certified Advisor support for your books, plus timely tax-saving guidance.</p>
+        <ul><li>Xero setup and clean-up</li><li>Records ready for tax time</li><li>Pre-30 June tax planning</li></ul>
+        <a class="card-link" href="#contact" data-service="Xero and tax planning">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
       </article>
     </div>
     <div class="entities reveal">
@@ -526,6 +539,25 @@ footer a:hover{color:var(--orange)}
   </div>
 </section>
 
+<!-- EXTENDED SUPPORT -->
+<section class="section" id="support">
+  <div class="wrap split">
+    <div class="split-art reveal"><img src="assets/illustrations/after-hours.svg" alt="Illustration of a person working at a desk late in the evening" width="560" height="420" loading="lazy"></div>
+    <div class="reveal">
+      <span class="eyebrow">Extended support</span>
+      <h2>Weekends and after hours. When it suits you.</h2>
+      <p class="big-muted">We'll assist you with timely tax-saving guidance, late filings, amendments to your tax returns and more. Most people work business hours, so we don't stop at five.</p>
+      <ul class="ticks dark">
+        <li><svg><use href="#i-check"/></svg>Weekday evening appointments</li>
+        <li><svg><use href="#i-check"/></svg>Weekend appointments</li>
+        <li><svg><use href="#i-check"/></svg>Late filings and amendments</li>
+        <li><svg><use href="#i-check"/></svg>Timely tax-saving guidance</li>
+      </ul>
+      <a href="#contact" class="btn btn-primary">Book an after-hours time <svg><use href="#i-arrow"/></svg></a>
+    </div>
+  </div>
+</section>
+
 <!-- HOW IT WORKS -->
 <section class="section soft" id="how">
   <div class="wrap">
@@ -536,21 +568,25 @@ footer a:hover{color:var(--orange)}
     </div>
     <div class="steps">
       <div class="step reveal">
+        <img class="step-art" src="assets/illustrations/step-book.svg" alt="Illustration of booking a time on a calendar" loading="lazy">
         <div class="step-num">1</div>
         <h3>Get in touch</h3>
         <p>Request a quote or book a time. Quick appointments, with clear pricing before any work starts.</p>
       </div>
       <div class="step reveal">
+        <img class="step-art" src="assets/illustrations/step-form.svg" alt="Illustration of filling in a form" loading="lazy">
         <div class="step-num">2</div>
         <h3>Complete the form</h3>
         <p>Fill in our one-page appointment form so your details are recorded correctly and your meeting runs smoothly.</p>
       </div>
       <div class="step reveal">
+        <img class="step-art" src="assets/illustrations/step-meet.svg" alt="Illustration of two people meeting" loading="lazy">
         <div class="step-num">3</div>
         <h3>Meet your CPA</h3>
         <p>We go through your return together in plain English and point out anything worth planning for next year.</p>
       </div>
       <div class="step reveal">
+        <img class="step-art" src="assets/illustrations/step-lodged.svg" alt="Illustration of a completed document with a tick" loading="lazy">
         <div class="step-num">4</div>
         <h3>We lodge it</h3>
         <p>We lodge with the ATO promptly. When a refund is available, we avoid delay so it reaches you sooner.</p>
@@ -595,9 +631,27 @@ footer a:hover{color:var(--orange)}
   </div>
 </section>
 
+<!-- SOFTWARE -->
+<!-- OWNER: confirm each claim below matches how the in-house software works. -->
+<section class="section soft" id="software">
+  <div class="wrap split">
+    <div class="reveal">
+      <span class="eyebrow">Custom-built software</span>
+      <h2>Prepared on our own in-house tax software</h2>
+      <p class="big-muted">We don't rely on off-the-shelf tools alone. Your return is prepared on tax preparation software we built in-house, designed around the way we work and the returns we prepare every day.</p>
+      <div class="feature-list">
+        <div class="feature"><div class="ic"><svg><use href="#i-check-circle"/></svg></div><div><h3>Consistent checks on every return</h3><p>The same review steps run on every return before it is lodged.</p></div></div>
+        <div class="feature"><div class="ic"><svg><use href="#i-calendar"/></svg></div><div><h3>Faster turnaround</h3><p>Less manual handling means quicker appointments and refunds without delay.</p></div></div>
+        <div class="feature"><div class="ic"><svg><use href="#i-lock"/></svg></div><div><h3>Your details recorded securely</h3><p>Information from your appointment form goes straight into our secure database.</p></div></div>
+      </div>
+    </div>
+    <div class="split-art reveal"><img src="assets/illustrations/software.svg" alt="Illustration of a person reviewing documents that have been checked off" width="560" height="420" loading="lazy"></div>
+  </div>
+</section>
+
 <!-- PRICING -->
 <!-- OWNER: set real starting prices in the three .price blocks below, or keep "Fixed fee" wording. -->
-<section class="section soft" id="pricing">
+<section class="section" id="pricing">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Transparent pricing</span>
@@ -606,6 +660,7 @@ footer a:hover{color:var(--orange)}
     </div>
     <div class="pricing">
       <div class="plan reveal">
+        <img class="plan-art" src="assets/illustrations/plan-individual.svg" alt="" loading="lazy">
         <h3>Individual</h3>
         <p class="plan-for">Employees with straightforward income and work deductions.</p>
         <div class="price"><strong>Fixed fee</strong><span>per return</span></div>
@@ -619,6 +674,7 @@ footer a:hover{color:var(--orange)}
       </div>
       <div class="plan featured reveal">
         <span class="badge">Most popular</span>
+        <img class="plan-art" src="assets/illustrations/plan-expat.svg" alt="" loading="lazy">
         <h3>Investor and Expat</h3>
         <p class="plan-for">Rental properties, shares, crypto, or income from overseas.</p>
         <div class="price"><strong>Fixed fee</strong><span>per return</span></div>
@@ -632,6 +688,7 @@ footer a:hover{color:var(--orange)}
         <a href="#contact" class="btn btn-primary" data-service="Expat or foreign income">Get my quote</a>
       </div>
       <div class="plan reveal">
+        <img class="plan-art" src="assets/illustrations/plan-business.svg" alt="" loading="lazy">
         <h3>Business</h3>
         <p class="plan-for">Partnerships, companies, trusts and SMSFs.</p>
         <div class="price"><strong>Tailored</strong><span>fixed annual fee</span></div>
@@ -650,7 +707,7 @@ footer a:hover{color:var(--orange)}
 
 <!-- TESTIMONIALS -->
 <!-- OWNER: these three reviews are SAMPLES. Replace each with a real client review (with permission) and delete the placeholder tag. Do not publish them as-is. -->
-<section class="section" id="reviews">
+<section class="section soft" id="reviews">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Client stories</span>
@@ -681,7 +738,7 @@ footer a:hover{color:var(--orange)}
 
 <!-- ABOUT -->
 <!-- OWNER: replace the initials with a headshot: <img class="portrait" src="assets/robert-avey.jpg" alt="Robert Avey"> -->
-<section class="section soft" id="team">
+<section class="section" id="team">
   <div class="wrap about-grid">
     <div class="about-card reveal">
       <div class="portrait" aria-hidden="true">RA</div>
@@ -707,7 +764,7 @@ footer a:hover{color:var(--orange)}
 </section>
 
 <!-- FAQ -->
-<section class="section" id="faq">
+<section class="section soft" id="faq">
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">FAQ</span>
@@ -767,6 +824,7 @@ footer a:hover{color:var(--orange)}
         <li><span class="c-ic"><svg><use href="#i-pin"/></svg></span><span>Brisbane, QLD, and online Australia-wide</span></li>
       </ul>
       <a href="assets/appointment-form.pdf" download class="btn btn-white"><svg><use href="#i-book"/></svg>Download appointment form</a>
+      <div class="contact-art"><img src="assets/illustrations/contact.svg" alt="" loading="lazy"></div>
     </div>
     <!-- OWNER: this form opens the visitor's email app. For direct submissions, point action= at a form service (e.g. Formspree) and remove the script handler. -->
     <form class="quote reveal" id="quoteForm" novalidate>
@@ -790,7 +848,7 @@ footer a:hover{color:var(--orange)}
           <option>Expat or foreign income</option>
           <option>Rental property or investments</option>
           <option>Late filings and amendments</option>
-          <option>Xero, software and tax planning</option>
+          <option>Xero and tax planning</option>
           <option>Something else</option>
         </select>
       </div>
