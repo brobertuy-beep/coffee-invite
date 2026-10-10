@@ -97,7 +97,7 @@
   <g filter="url(#sh)" transform="translate(380 14)">
     <rect width="196" height="64" rx="18" fill="#ffffff"/>
     <circle cx="32" cy="32" r="18" fill="#0f2a4a"/>
-    <text x="32" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="14" font-weight="800" fill="#ff8a1f">IT</text>
+    <text x="32" y="38" text-anchor="middle" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="14" font-weight="800" fill="#ff8a1f">RA</text>
     <text x="60" y="28" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="12" font-weight="800" fill="#0f2a4a">Your accountant</text>
     <text x="60" y="46" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="12" font-weight="500" fill="#5b6b80">Draft is ready to review</text>
   </g>

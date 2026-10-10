@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Insight Tax | Registered Tax Agent for Individuals, Businesses and Expats</title>
-<meta name="description" content="Insight Tax is a registered Australian tax agent. Fixed-fee tax returns, BAS, bookkeeping and advice for individuals, small businesses and people living across borders. Online Australia-wide, or in person in Ormeau QLD.">
-<link rel="canonical" href="https://insighttax.com.au/">
+<title>Insight Tax | Brisbane CPA and Registered Tax Agent</title>
+<meta name="description" content="Insight Tax is a Brisbane CPA and Registered Tax Agent with 20+ years experience. Affordable, fast and hassle-free tax returns for individuals, small businesses and people earning across borders.">
+<link rel="canonical" href="https://insightax.com.au/">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Insight Tax | Australian tax, done right">
-<meta property="og:description" content="Registered tax agent for individuals, small businesses and expats. Fixed fees, secure online process, accountants who answer.">
+<meta property="og:description" content="You don't have to be a tax expert. That's our job. Brisbane CPA and Registered Tax Agent.">
 <meta property="og:image" content="assets/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0f2a4a">
@@ -22,17 +22,16 @@
   "@context": "https://schema.org",
   "@type": "AccountingService",
   "name": "Insight Tax",
-  "url": "https://insighttax.com.au/",
-  "email": "info@insighttax.com.au",
-  "telephone": "+61403775273",
+  "url": "https://insightax.com.au/",
+  "email": "info@insightax.com.au",
+  "telephone": "+61403974718",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "24 Vaughan Drive",
-    "addressLocality": "Ormeau",
+    "addressLocality": "Brisbane",
     "addressRegion": "QLD",
-    "postalCode": "4208",
     "addressCountry": "AU"
   },
+  "founder": {"@type": "Person", "name": "Robert Avey", "jobTitle": "CPA and Registered Tax Agent"},
   "areaServed": "AU",
   "priceRange": "$$"
 }
@@ -145,6 +144,11 @@ header.site.scrolled{border-color:var(--line);box-shadow:0 4px 20px -12px rgba(1
 .card-link{display:inline-flex;align-items:center;gap:6px;margin-top:16px;font-weight:700;color:var(--navy);text-decoration:none;font-size:.95rem}
 .card-link:hover{color:var(--orange-d)}
 
+.entities{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:10px;margin-top:40px}
+.entities-title{font-weight:700;color:var(--muted);font-size:.85rem;text-transform:uppercase;letter-spacing:.1em;margin-right:6px}
+.entities span:not(.entities-title){background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;color:var(--navy);font-size:.92rem}
+.entities small{font-weight:500;color:var(--muted)}
+
 /* expat band */
 .expat{background:radial-gradient(1200px 500px at 85% 0%,#1d4677 0%,transparent 60%),var(--navy);color:#cfe0f5;position:relative;overflow:hidden}
 .expat h2,.expat h3{color:#fff}
@@ -221,6 +225,16 @@ header.site.scrolled{border-color:var(--line);box-shadow:0 4px 20px -12px rgba(1
 .role{color:var(--orange-d);font-weight:700;font-size:.9rem;margin-bottom:12px}
 .member p{color:var(--muted);font-size:.95rem;margin:0}
 
+/* about */
+.about-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:56px;align-items:center}
+.about-card{background:#fff;border:1px solid var(--line);border-radius:22px;padding:36px;text-align:center;box-shadow:var(--shadow-sm)}
+.about-card .portrait{width:132px;height:132px;margin:0 auto 18px;border-radius:50%;display:grid;place-items:center;font-size:2.4rem;font-weight:800;color:#fff;background:linear-gradient(135deg,var(--navy-2),var(--navy));box-shadow:0 0 0 6px #fff,0 0 0 8px var(--line);object-fit:cover}
+.about-card h3{font-size:1.4rem;margin-bottom:2px}
+.about-facts{list-style:none;padding:0;margin:20px 0 0;display:grid;gap:10px;text-align:left}
+.about-facts li{display:flex;gap:10px;font-weight:600;color:var(--ink);font-size:.95rem}
+.about-facts svg{flex:none;width:20px;height:20px;color:var(--green)}
+.steps-cta .btn{margin:6px}
+
 /* faq */
 .faq{max-width:820px;margin:0 auto;display:grid;gap:14px}
 .faq details{background:#fff;border:1px solid var(--line);border-radius:14px;padding:0 22px;transition:box-shadow .2s}
@@ -255,6 +269,13 @@ form.quote .btn{width:100%;margin-top:4px}
 .form-foot{font-size:.82rem;color:var(--muted);text-align:center;margin:14px 0 0}
 .form-ok{display:none;background:#e3f6ec;color:#11683a;border-radius:12px;padding:14px;font-weight:600;font-size:.95rem;margin-top:14px}
 
+.seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--bg-soft);border-radius:14px;padding:5px;margin-bottom:18px}
+.seg label{cursor:pointer}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg span{display:block;text-align:center;padding:10px 8px;border-radius:10px;font-weight:700;font-size:.92rem;color:var(--muted)}
+.seg input:checked+span{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm)}
+.seg input:focus-visible+span{outline:3px solid var(--orange);outline-offset:2px}
+
 /* footer */
 footer{background:var(--navy-3);color:#9fb6d3;font-size:.92rem;padding:64px 0 28px}
 .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:40px}
@@ -284,7 +305,7 @@ footer a:hover{color:var(--orange)}
 }
 @media (max-width:960px){
   .section{padding:72px 0}
-  .hero-grid,.expat-grid,.why-grid,.contact-grid{grid-template-columns:1fr}
+  .hero-grid,.expat-grid,.why-grid,.contact-grid,.about-grid{grid-template-columns:1fr}
   .hero-art{max-width:480px;margin:0 auto}
   .grid-3,.reviews,.team,.pricing{grid-template-columns:1fr 1fr}
   .creds .wrap{grid-template-columns:1fr 1fr;justify-content:stretch}
@@ -341,7 +362,7 @@ footer a:hover{color:var(--orange)}
 </svg>
 
 <div class="topbar">
-  <strong>Lodging your own return?</strong> The ATO deadline is 31 October. Register with a tax agent before then and you may get more time. <a href="#contact">Talk to us today</a>
+  <strong>Lodging your own return?</strong> The ATO deadline is 31 October. Register with a tax agent before then and you may get more time. Weekend and after-hours appointments available. <a href="#contact">Book now</a>
 </div>
 
 <header class="site" id="top">
@@ -353,12 +374,12 @@ footer a:hover{color:var(--orange)}
         <li><a href="#expats">Expats</a></li>
         <li><a href="#how">How it works</a></li>
         <li><a href="#pricing">Pricing</a></li>
-        <li><a href="#team">Our team</a></li>
+        <li><a href="#team">About us</a></li>
         <li><a href="#faq">FAQ</a></li>
       </ul>
     </nav>
     <div class="nav-cta">
-      <a class="nav-phone" href="tel:+61403775273"><svg><use href="#i-phone"/></svg>0403 775 273</a>
+      <a class="nav-phone" href="tel:+61403974718"><svg><use href="#i-phone"/></svg>0403 974 718</a>
       <a class="btn btn-primary btn-sm" href="#contact">Get a quote</a>
       <button class="menu-btn" id="menuBtn" aria-label="Open menu" aria-expanded="false" aria-controls="navLinks"><svg><use href="#i-menu"/></svg></button>
     </div>
@@ -371,19 +392,20 @@ footer a:hover{color:var(--orange)}
 <section class="hero">
   <div class="wrap hero-grid">
     <div class="reveal">
-      <span class="eyebrow">Registered Australian Tax Agent</span>
-      <h1>Australian tax, <span class="hl">done right.</span><br>Done for you.</h1>
-      <p class="lead">Fixed-fee tax returns, BAS and advice for individuals, small businesses and anyone earning across borders. A real accountant on your file, a secure online process, and no surprises on the bill.</p>
+      <span class="eyebrow">Brisbane CPA and Registered Tax Agent</span>
+      <h1>You don't have to be a <span class="hl">tax expert.</span><br>That's our job.</h1>
+      <p class="lead">Affordable, fast and hassle-free tax returns for individuals and small businesses, including anyone earning across borders. Prepared personally by a CPA with more than 20 years in Australian tax.</p>
 
       <div class="picker" role="group" aria-labelledby="pickerLabel">
         <div class="picker-label" id="pickerLabel">What do you need help with?</div>
         <div class="chips" id="chips">
           <button type="button" class="chip" aria-pressed="false" data-value="Individual tax return">Personal tax return</button>
-          <button type="button" class="chip" aria-pressed="false" data-value="Business tax and BAS">Business and BAS</button>
+          <button type="button" class="chip" aria-pressed="false" data-value="Business tax return">Business tax return</button>
           <button type="button" class="chip" aria-pressed="false" data-value="Expat or foreign income">Expat or foreign income</button>
           <button type="button" class="chip" aria-pressed="false" data-value="Rental property or investments">Rental or investments</button>
-          <button type="button" class="chip" aria-pressed="false" data-value="Company, trust or SMSF">Company, trust or SMSF</button>
-          <button type="button" class="chip" aria-pressed="false" data-value="Bookkeeping and payroll">Bookkeeping</button>
+          <button type="button" class="chip" aria-pressed="false" data-value="Company, trust, partnership or SMSF">Company, trust or SMSF</button>
+          <button type="button" class="chip" aria-pressed="false" data-value="BAS, payroll and super">BAS and payroll</button>
+          <button type="button" class="chip" aria-pressed="false" data-value="Late filings and amendments">Late returns</button>
         </div>
         <div class="picker-actions">
           <a href="#contact" class="btn btn-primary" id="pickerGo">Get my fixed-fee quote <svg><use href="#i-arrow"/></svg></a>
@@ -392,9 +414,9 @@ footer a:hover{color:var(--orange)}
       </div>
 
       <div class="trust-row">
-        <span><svg><use href="#i-check-circle"/></svg>Registered Tax Agent</span>
-        <span><svg><use href="#i-check-circle"/></svg>15+ years in Australian tax</span>
-        <span><svg><use href="#i-check-circle"/></svg>100% online, Australia-wide</span>
+        <span><svg><use href="#i-check-circle"/></svg>CPA and Registered Tax Agent</span>
+        <span><svg><use href="#i-check-circle"/></svg>20+ years in Australian tax</span>
+        <span><svg><use href="#i-check-circle"/></svg>Weekends and after hours</span>
       </div>
     </div>
     <div class="hero-art reveal">
@@ -404,13 +426,14 @@ footer a:hover{color:var(--orange)}
 </section>
 
 <!-- CREDENTIALS -->
+<!-- OWNER: official TPB, CPA Australia and Xero Certified Advisor badges can replace these icons, used under each body's logo rules. -->
 <section class="creds" aria-label="Credentials">
   <div class="wrap">
     <span class="creds-title">Qualified. Registered. Accountable.</span>
-    <span class="cred"><span class="cred-ic"><svg><use href="#i-shield"/></svg></span>Registered with the Tax Practitioners Board</span>
-    <span class="cred"><span class="cred-ic"><svg><use href="#i-badge"/></svg></span>Chartered Accountant on staff</span>
-    <span class="cred"><span class="cred-ic"><svg><use href="#i-book"/></svg></span>Institute of Public Accountants member</span>
-    <span class="cred"><span class="cred-ic"><svg><use href="#i-lock"/></svg></span>Secure online document portal</span>
+    <span class="cred"><span class="cred-ic"><svg><use href="#i-shield"/></svg></span>TPB Registered Tax Agent 75496000</span>
+    <span class="cred"><span class="cred-ic"><svg><use href="#i-badge"/></svg></span>CPA Australia</span>
+    <span class="cred"><span class="cred-ic"><svg><use href="#i-book"/></svg></span>Xero Certified Advisor</span>
+    <span class="cred"><span class="cred-ic"><svg><use href="#i-calendar"/></svg></span>20+ years experience</span>
   </div>
 </section>
 
@@ -419,52 +442,60 @@ footer a:hover{color:var(--orange)}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">What we do</span>
-      <h2>Every Australian tax obligation, handled by one team</h2>
-      <p>From a single PAYG return to a group of companies and trusts, you get the same thing: clear advice, accurate lodgements and an accountant who picks up the phone.</p>
+      <h2>Tax returns done properly, at a fair price</h2>
+      <p>For tasks you don't enjoy, or that eat into time you don't have. We deliver prompt, affordable tax services in Brisbane and online, so you stop losing valuable time.</p>
     </div>
     <div class="grid-3">
       <article class="card reveal">
         <div class="ic"><svg><use href="#i-user"/></svg></div>
         <h3>Individual tax returns</h3>
-        <p>Maximise every deduction you are entitled to, without the guesswork or the audit risk.</p>
-        <ul><li>Salary, wages and work deductions</li><li>Rental properties and shares</li><li>Capital gains and crypto</li></ul>
+        <p>We work hard to maximise your tax position so you get the refund you are entitled to.</p>
+        <ul><li>Salary, wages and work deductions</li><li>Sole traders</li><li>Rental properties, shares and capital gains</li></ul>
         <a class="card-link" href="#contact" data-service="Individual tax return">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="card reveal">
         <div class="ic"><svg><use href="#i-briefcase"/></svg></div>
         <h3>Business tax and BAS</h3>
-        <p>Stay compliant and keep more of what you earn, whether you are a sole trader or a growing company.</p>
-        <ul><li>BAS and IAS lodgements</li><li>Sole trader and partnership returns</li><li>GST, PAYG and payroll tax</li></ul>
-        <a class="card-link" href="#contact" data-service="Business tax and BAS">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card reveal">
-        <div class="ic"><svg><use href="#i-globe"/></svg></div>
-        <h3>Expat and international tax</h3>
-        <p>Moving to Australia, leaving it, or earning from both sides. We work out where you stand.</p>
-        <ul><li>Tax residency assessments</li><li>Foreign income and tax offsets</li><li>Departing Australia super</li></ul>
-        <a class="card-link" href="#expats">Learn more <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        <p>Keep your business compliant and your cash moving, with a qualified tax agent on hand.</p>
+        <ul><li>BAS lodgements</li><li>Cashflow management</li><li>Payroll and super</li></ul>
+        <a class="card-link" href="#contact" data-service="BAS, payroll and super">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="card reveal">
         <div class="ic"><svg><use href="#i-building"/></svg></div>
         <h3>Companies, trusts and SMSF</h3>
-        <p>Structures that work for you, with annual compliance taken off your plate.</p>
-        <ul><li>Company and trust tax returns</li><li>SMSF accounting</li><li>Division 7A loan management</li></ul>
-        <a class="card-link" href="#contact" data-service="Company, trust or SMSF">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        <p>Annual returns for every common structure, prepared and lodged on time.</p>
+        <ul><li>Companies and partnerships</li><li>Trusts, including deceased estates</li><li>Complying SMSFs</li></ul>
+        <a class="card-link" href="#contact" data-service="Company, trust, partnership or SMSF">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="card reveal">
-        <div class="ic"><svg><use href="#i-book"/></svg></div>
-        <h3>Bookkeeping and payroll</h3>
-        <p>Clean books every month so tax time is quick and your numbers are always ready.</p>
-        <ul><li>Xero, MYOB and QuickBooks</li><li>Payroll and Single Touch Payroll</li><li>Superannuation obligations</li></ul>
-        <a class="card-link" href="#contact" data-service="Bookkeeping and payroll">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        <div class="ic"><svg><use href="#i-globe"/></svg></div>
+        <h3>Expat and foreign income</h3>
+        <p>Moving to Australia, leaving it, or earning from both sides. We work out where you stand.</p>
+        <ul><li>Tax residency questions</li><li>Foreign income and tax offsets</li><li>Australian income while abroad</li></ul>
+        <a class="card-link" href="#expats">Learn more <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+      </article>
+      <article class="card reveal">
+        <div class="ic"><svg><use href="#i-calendar"/></svg></div>
+        <h3>Late filings and amendments</h3>
+        <p>No matter what state your records are in, we tidy up past years and bring you up to date.</p>
+        <ul><li>Overdue returns lodged</li><li>Amendments to past returns</li><li>ATO letters and enquiries</li></ul>
+        <a class="card-link" href="#contact" data-service="Late filings and amendments">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
       </article>
       <article class="card reveal">
         <div class="ic"><svg><use href="#i-chart"/></svg></div>
-        <h3>Tax planning and advisory</h3>
-        <p>Plan before 30 June, not after. Practical strategies that reduce tax legally.</p>
-        <ul><li>Year-end tax planning</li><li>Business setup and ASIC compliance</li><li>ATO enquiries and payment plans</li></ul>
-        <a class="card-link" href="#contact" data-service="Tax planning and advisory">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        <h3>Software and tax planning</h3>
+        <p>Xero Certified Advisor support and custom-built tools, plus timely tax-saving guidance.</p>
+        <ul><li>Xero setup and clean-up</li><li>Custom-built software</li><li>Pre-30 June tax planning</li></ul>
+        <a class="card-link" href="#contact" data-service="Xero, software and tax planning">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
       </article>
+    </div>
+    <div class="entities reveal">
+      <span class="entities-title">Income tax returns for</span>
+      <span>Individuals <small>incl. sole traders</small></span>
+      <span>Partnerships</span>
+      <span>Trusts <small>incl. deceased estates</small></span>
+      <span>Companies</span>
+      <span>Complying SMSFs</span>
     </div>
   </div>
 </section>
@@ -477,17 +508,17 @@ footer a:hover{color:var(--orange)}
       <h2>Already file overseas? We look after the Australian side.</h2>
       <p class="big">If you live in Australia but still file in another country, or you have moved away and still have income here, you probably have two tax systems to deal with. Your overseas preparer handles one. We handle Australia, and make sure the two returns agree.</p>
       <ul class="ticks">
-        <li><svg><use href="#i-check"/></svg>Australian tax residency assessments</li>
+        <li><svg><use href="#i-check"/></svg>Australian tax residency questions</li>
         <li><svg><use href="#i-check"/></svg>Worldwide income and foreign income tax offsets</li>
         <li><svg><use href="#i-check"/></svg>Australian rental property while living abroad</li>
         <li><svg><use href="#i-check"/></svg>Capital gains for non-residents and new arrivals</li>
-        <li><svg><use href="#i-check"/></svg>Super contributions and departing Australia payments</li>
+        <li><svg><use href="#i-check"/></svg>Your first or final Australian return</li>
         <li><svg><use href="#i-check"/></svg>Tax treaty positions documented for both returns</li>
       </ul>
       <div class="callout">
         <strong>Working with an expat tax firm already?</strong> Great. With your permission we share figures and timing directly with your overseas preparer, so foreign tax credits line up and nothing gets taxed twice.
       </div>
-      <a href="#contact" class="btn btn-primary" data-service="Expat or foreign income">Talk to an expat specialist <svg><use href="#i-arrow"/></svg></a>
+      <a href="#contact" class="btn btn-primary" data-service="Expat or foreign income">Talk to us about your situation <svg><use href="#i-arrow"/></svg></a>
     </div>
     <div class="expat-art reveal">
       <img src="assets/expat.svg" alt="Illustration of an overseas tax return and an Australian tax return linked and kept in sync" width="560" height="440">
@@ -500,33 +531,34 @@ footer a:hover{color:var(--orange)}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">How it works</span>
-      <h2>Four simple steps. No office visit needed.</h2>
-      <p>Most clients never need to leave home. If you would rather sit down with us in Ormeau, you are always welcome.</p>
+      <h2>Four simple steps. No complicated forms.</h2>
+      <p>Meet us in Brisbane or online, including weekends and after hours.</p>
     </div>
     <div class="steps">
       <div class="step reveal">
         <div class="step-num">1</div>
-        <h3>Get your quote</h3>
-        <p>Tell us about your situation in a two-minute form. We reply with a fixed fee before any work starts.</p>
+        <h3>Get in touch</h3>
+        <p>Request a quote or book a time. Quick appointments, with clear pricing before any work starts.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">2</div>
-        <h3>Upload securely</h3>
-        <p>Send documents through our encrypted portal. We pre-fill what we can from the ATO, so you send less.</p>
+        <h3>Complete the form</h3>
+        <p>Fill in our one-page appointment form so your details are recorded correctly and your meeting runs smoothly.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">3</div>
-        <h3>Review your draft</h3>
-        <p>Your accountant prepares the return, explains the result in plain English and answers your questions.</p>
+        <h3>Meet your CPA</h3>
+        <p>We go through your return together in plain English and point out anything worth planning for next year.</p>
       </div>
       <div class="step reveal">
         <div class="step-num">4</div>
         <h3>We lodge it</h3>
-        <p>Once you approve, we lodge with the ATO and keep you posted until your assessment arrives.</p>
+        <p>We lodge with the ATO promptly. When a refund is available, we avoid delay so it reaches you sooner.</p>
       </div>
     </div>
     <div class="steps-cta reveal">
       <a href="#contact" class="btn btn-primary">Start step one <svg><use href="#i-arrow"/></svg></a>
+      <a href="assets/appointment-form.pdf" class="btn btn-ghost" download>Download appointment form</a>
     </div>
   </div>
 </section>
@@ -536,12 +568,13 @@ footer a:hover{color:var(--orange)}
   <div class="wrap why-grid">
     <div class="reveal">
       <span class="eyebrow">Why Insight Tax</span>
-      <h2>Boutique attention. Without the boutique price tag.</h2>
-      <p>Big chains rush you through in 20 minutes. Doing it yourself leaves money on the table. We sit in between: experienced, registered accountants who take the time to understand your situation.</p>
+      <h2>So much more than modest tax fees.</h2>
+      <p>Tax law changes constantly. Robert Avey, CPA and Registered Tax Agent, untangles the detail and acts as your compass, so you get the right result without becoming a tax expert yourself.</p>
       <div class="feature-list">
-        <div class="feature"><div class="ic"><svg><use href="#i-tag"/></svg></div><div><h3>Fixed fee, agreed upfront</h3><p>You know the cost before we start. No hourly billing, no surprises.</p></div></div>
-        <div class="feature"><div class="ic"><svg><use href="#i-chat"/></svg></div><div><h3>Direct line to your accountant</h3><p>The person preparing your return is the person you talk to.</p></div></div>
-        <div class="feature"><div class="ic"><svg><use href="#i-calendar"/></svg></div><div><h3>Help all year, not just in July</h3><p>ATO letters, a new job, a property purchase. Ask us any time.</p></div></div>
+        <div class="feature"><div class="ic"><svg><use href="#i-tag"/></svg></div><div><h3>Affordable</h3><p>Professional services at reasonable prices, quoted before we start.</p></div></div>
+        <div class="feature"><div class="ic"><svg><use href="#i-chat"/></svg></div><div><h3>Fast turnaround</h3><p>Quick appointments. When a refund is available, we avoid delay.</p></div></div>
+        <div class="feature"><div class="ic"><svg><use href="#i-shield"/></svg></div><div><h3>Problem free</h3><p>No complicated forms. We sidestep the hassle and deal with the ATO for you.</p></div></div>
+        <div class="feature"><div class="ic"><svg><use href="#i-chat"/></svg></div><div><h3>Weekends and after hours</h3><p>Extended support that fits around your work, not ours.</p></div></div>
       </div>
     </div>
     <div class="compare reveal">
@@ -550,10 +583,11 @@ footer a:hover{color:var(--orange)}
         <thead><tr><th scope="col"></th><th scope="col" class="us">Insight Tax</th><th scope="col">DIY</th><th scope="col">Tax chains</th></tr></thead>
         <tbody>
           <tr><td>Registered tax agent prepares your return</td><td class="us"><span class="yes" aria-label="Yes">&#10003;</span></td><td><span class="no" aria-label="No">&#10005;</span></td><td><span class="yes" aria-label="Yes">&#10003;</span></td></tr>
-          <tr><td>Same accountant every year</td><td class="us"><span class="yes" aria-label="Yes">&#10003;</span></td><td><span class="no" aria-label="No">&#10005;</span></td><td><span class="varies">Varies</span></td></tr>
+          <tr><td>CPA prepares your return every year</td><td class="us"><span class="yes" aria-label="Yes">&#10003;</span></td><td><span class="no" aria-label="No">&#10005;</span></td><td><span class="varies">Varies</span></td></tr>
           <tr><td>Foreign income and expat expertise</td><td class="us"><span class="yes" aria-label="Yes">&#10003;</span></td><td><span class="no" aria-label="No">&#10005;</span></td><td><span class="varies">Limited</span></td></tr>
           <tr><td>Fixed fee quoted upfront</td><td class="us"><span class="yes" aria-label="Yes">&#10003;</span></td><td><span class="varies">Free</span></td><td><span class="varies">Varies</span></td></tr>
           <tr><td>Extended lodgement deadline</td><td class="us"><span class="yes" aria-label="Yes">&#10003;</span></td><td><span class="no" aria-label="No">&#10005;</span></td><td><span class="yes" aria-label="Yes">&#10003;</span></td></tr>
+          <tr><td>Weekend and after-hours appointments</td><td class="us"><span class="yes" aria-label="Yes">&#10003;</span></td><td><span class="varies">n/a</span></td><td><span class="varies">Varies</span></td></tr>
           <tr><td>Year-round advice and ATO support</td><td class="us"><span class="yes" aria-label="Yes">&#10003;</span></td><td><span class="no" aria-label="No">&#10005;</span></td><td><span class="varies">Limited</span></td></tr>
         </tbody>
       </table>
@@ -567,8 +601,8 @@ footer a:hover{color:var(--orange)}
   <div class="wrap">
     <div class="section-head reveal">
       <span class="eyebrow">Transparent pricing</span>
-      <h2>Simple, fixed fees</h2>
-      <p>Every quote is fixed before we start. Our fee for preparing your return is generally tax deductible next year.</p>
+      <h2>Affordable, fixed fees</h2>
+      <p>Professional services at reasonable prices. Every quote is fixed before we start, and our fee is generally tax deductible next year.</p>
     </div>
     <div class="pricing">
       <div class="plan reveal">
@@ -593,24 +627,24 @@ footer a:hover{color:var(--orange)}
           <li><svg><use href="#i-check"/></svg>Rental property schedules</li>
           <li><svg><use href="#i-check"/></svg>Capital gains calculations</li>
           <li><svg><use href="#i-check"/></svg>Foreign income and tax offsets</li>
-          <li><svg><use href="#i-check"/></svg>Residency review</li>
+          <li><svg><use href="#i-check"/></svg>Residency questions answered</li>
         </ul>
         <a href="#contact" class="btn btn-primary" data-service="Expat or foreign income">Get my quote</a>
       </div>
       <div class="plan reveal">
         <h3>Business</h3>
-        <p class="plan-for">Sole traders, companies, trusts and partnerships.</p>
+        <p class="plan-for">Partnerships, companies, trusts and SMSFs.</p>
         <div class="price"><strong>Tailored</strong><span>fixed annual fee</span></div>
         <ul>
           <li><svg><use href="#i-check"/></svg>Financial statements and tax return</li>
-          <li><svg><use href="#i-check"/></svg>BAS and IAS lodgements</li>
-          <li><svg><use href="#i-check"/></svg>ASIC annual review</li>
+          <li><svg><use href="#i-check"/></svg>BAS lodgements</li>
+          <li><svg><use href="#i-check"/></svg>Payroll, super and cashflow</li>
           <li><svg><use href="#i-check"/></svg>Tax planning meeting</li>
         </ul>
-        <a href="#contact" class="btn btn-ghost" data-service="Business tax and BAS">Get my quote</a>
+        <a href="#contact" class="btn btn-ghost" data-service="BAS, payroll and super">Get my quote</a>
       </div>
     </div>
-    <p class="pricing-note reveal">Not sure which fits? <a href="tel:+61403775273"><strong>Call 0403 775 273</strong></a> and we will tell you in two minutes.</p>
+    <p class="pricing-note reveal">Not sure which fits? <a href="tel:+61403974718"><strong>Call 0403 974 718</strong></a> and we will tell you in two minutes.</p>
   </div>
 </section>
 
@@ -625,54 +659,49 @@ footer a:hover{color:var(--orange)}
     <div class="reviews">
       <figure class="review reveal">
         <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"I moved from the US to Brisbane and had no idea how the two systems fitted together. Insight Tax sorted my Australian return and worked with my US preparer so everything matched."</blockquote>
+        <blockquote>"I moved from the US to Brisbane and had no idea how the two systems fitted together. Robert sorted my Australian return and worked with my US preparer so everything matched."</blockquote>
         <figcaption class="who"><span class="avatar">SM</span><span><b>Sample client</b><small>US citizen living in QLD</small></span></figcaption>
         <span class="placeholder-tag">Sample review, replace before launch</span>
       </figure>
       <figure class="review reveal">
         <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-        <blockquote>"Clear quote, quick turnaround, and they actually explained my BAS to me. First year I have felt on top of my business finances."</blockquote>
-        <figcaption class="who"><span class="avatar" style="background:var(--orange-d)">JT</span><span><b>Sample client</b><small>Sole trader, Gold Coast</small></span></figcaption>
+        <blockquote>"Clear quote, quick appointment, and my refund arrived faster than any year before. Robert explained everything without the jargon."</blockquote>
+        <figcaption class="who"><span class="avatar" style="background:var(--orange-d)">JT</span><span><b>Sample client</b><small>Sole trader, Brisbane</small></span></figcaption>
         <span class="placeholder-tag">Sample review, replace before launch</span>
       </figure>
       <figure class="review reveal">
         <div class="stars" aria-label="5 out of 5 stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
         <blockquote>"Two rental properties and a share portfolio used to mean a stressful July. Now I upload everything and get a call when it is done."</blockquote>
-        <figcaption class="who"><span class="avatar" style="background:#2d6aa8">RP</span><span><b>Sample client</b><small>Property investor, NSW</small></span></figcaption>
+        <figcaption class="who"><span class="avatar" style="background:#2d6aa8">RP</span><span><b>Sample client</b><small>Property investor, Brisbane</small></span></figcaption>
         <span class="placeholder-tag">Sample review, replace before launch</span>
       </figure>
     </div>
   </div>
 </section>
 
-<!-- TEAM -->
-<!-- OWNER: swap the initials for headshots by replacing each .portrait div with <img class="portrait" src="assets/name.jpg" alt="..."> -->
+<!-- ABOUT -->
+<!-- OWNER: replace the initials with a headshot: <img class="portrait" src="assets/robert-avey.jpg" alt="Robert Avey"> -->
 <section class="section soft" id="team">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <span class="eyebrow">Our team</span>
-      <h2>Qualified people who know your name</h2>
-      <p>A small, senior team. Your return is never handed to a junior you have never spoken to.</p>
+  <div class="wrap about-grid">
+    <div class="about-card reveal">
+      <div class="portrait" aria-hidden="true">RA</div>
+      <h3>Robert Avey</h3>
+      <div class="role">CPA and Registered Tax Agent</div>
+      <ul class="about-facts">
+        <li><svg><use href="#i-check"/></svg>20+ years in Australian tax</li>
+        <li><svg><use href="#i-check"/></svg>CPA Australia member</li>
+        <li><svg><use href="#i-check"/></svg>Registered Tax Agent 75496000</li>
+        <li><svg><use href="#i-check"/></svg>Xero Certified Advisor</li>
+        <li><svg><use href="#i-check"/></svg>Weekends and after hours</li>
+      </ul>
     </div>
-    <div class="team">
-      <div class="member reveal">
-        <div class="portrait" aria-hidden="true">YP</div>
-        <h3>Yagnesh Purohit</h3>
-        <div class="role">Registered Tax Agent, MIPA</div>
-        <p>More than 15 years of Australian experience across tax, accounting, bookkeeping and business advisory for individuals and small businesses.</p>
-      </div>
-      <div class="member reveal">
-        <div class="portrait" aria-hidden="true">AK</div>
-        <h3>Anuj Kalia</h3>
-        <div class="role">Chartered Accountant, MPA</div>
-        <p>Looks after company, trust and partnership compliance, and helps business owners plan ahead with confidence.</p>
-      </div>
-      <div class="member reveal">
-        <div class="portrait" aria-hidden="true">CH</div>
-        <h3>Chandan Hemnani</h3>
-        <div class="role">Senior Accountant</div>
-        <p>Prepares individual and business returns, BAS and bookkeeping, and is often the friendly voice when you call.</p>
-      </div>
+    <div class="reveal">
+      <span class="eyebrow">About us</span>
+      <h2>Your compass in an ever-changing tax landscape</h2>
+      <p>We are known for inexpensive tax return services and a relentless drive to maximise your tax position, which means better refunds.</p>
+      <p>We make tax simple. Beyond lodging your return, we give guidance on past income tax obligations and flag tax payable situations that may apply to you in the future.</p>
+      <p>Every client approaches their tax differently, so our service is personalised to your needs. Every conversation is friendly, clear and concise, and we proactively suggest ways to improve your personal tax affairs. You deal with Robert directly, not a junior you have never met.</p>
+      <a href="#contact" class="btn btn-primary" style="margin-top:8px">Book with Robert <svg><use href="#i-arrow"/></svg></a>
     </div>
   </div>
 </section>
@@ -691,7 +720,7 @@ footer a:hover{color:var(--orange)}
       </details>
       <details>
         <summary>I live overseas. Can you still prepare my Australian return?</summary>
-        <p>Yes. Our whole process works online, so it makes no difference whether you are in Ormeau or overseas. We regularly help Australians abroad with rental income, residency questions and final returns.</p>
+        <p>Yes. We can work with you online, so it makes no difference whether you are in Brisbane or overseas. Common situations include Australian rental income, residency questions and final returns.</p>
       </details>
       <details>
         <summary>I am a US citizen living in Australia. Do I need you as well as my US preparer?</summary>
@@ -702,12 +731,20 @@ footer a:hover{color:var(--orange)}
         <p>Residency depends on several tests, including where you live, how long you are here and your intentions. It is not always the same as your visa or citizenship status. We assess your situation and document the position so you can rely on it.</p>
       </details>
       <details>
-        <summary>What documents do I need?</summary>
-        <p>We pre-fill most income details from the ATO. You will usually just need receipts for deductions, rental and investment statements, and any foreign income records. After your quote we send a checklist built for your situation.</p>
+        <summary>What should I bring to my appointment?</summary>
+        <p>Please <a href="assets/appointment-form.pdf" download>download the appointment form</a> and complete it beforehand so your details are recorded correctly. Bring receipts for deductions, rental and investment statements, and any foreign income records. We pre-fill most income details from the ATO.</p>
       </details>
       <details>
         <summary>Is your fee tax deductible?</summary>
         <p>In most cases, yes. The cost of managing your tax affairs, including a tax agent's fee, is generally deductible in the year you pay it.</p>
+      </details>
+      <details>
+        <summary>I am behind on my tax returns. Can you help?</summary>
+        <p>Yes. No matter what state your records are in, we tidy up past years, lodge overdue returns and prepare amendments where needed, then keep you up to date from there.</p>
+      </details>
+      <details>
+        <summary>Do you see clients on weekends or after hours?</summary>
+        <p>Yes. We offer weekend and after-hours appointments, in Brisbane or online. Choose a preferred time when you book.</p>
       </details>
       <details>
         <summary>Can you help with an ATO letter, audit or debt?</summary>
@@ -722,19 +759,22 @@ footer a:hover{color:var(--orange)}
   <div class="wrap contact-grid">
     <div class="reveal">
       <span class="eyebrow">Get started</span>
-      <h2>Get your fixed-fee quote today</h2>
-      <p>Tell us a little about your situation and we will come back within one business day with a clear, fixed quote. No obligation, no hard sell.</p>
+      <h2>Book an appointment or get a quote</h2>
+      <p>Tell us a little about your situation and we will come back with a clear, fixed quote. No obligation, no hard sell. Booking an appointment? Please complete the appointment form first.</p>
       <ul class="contact-list">
-        <li><span class="c-ic"><svg><use href="#i-phone"/></svg></span><a href="tel:+61403775273">0403 775 273</a></li>
-        <li><span class="c-ic"><svg><use href="#i-mail"/></svg></span><a href="mailto:info@insighttax.com.au">info@insighttax.com.au</a></li>
-        <li><span class="c-ic"><svg><use href="#i-pin"/></svg></span><span>24 Vaughan Drive, Ormeau QLD 4208</span></li>
+        <li><span class="c-ic"><svg><use href="#i-phone"/></svg></span><a href="tel:+61403974718">0403 974 718</a></li>
+        <li><span class="c-ic"><svg><use href="#i-mail"/></svg></span><a href="mailto:info@insightax.com.au">info@insightax.com.au</a></li>
+        <li><span class="c-ic"><svg><use href="#i-pin"/></svg></span><span>Brisbane, QLD, and online Australia-wide</span></li>
       </ul>
-      <p style="margin-bottom:6px;font-weight:700;color:#fff">Representatives in</p>
-      <div class="offices"><span>Ormeau, QLD</span><span>Belconnen, ACT</span><span>Parramatta, NSW</span><span>Findon, SA</span></div>
+      <a href="assets/appointment-form.pdf" download class="btn btn-white"><svg><use href="#i-book"/></svg>Download appointment form</a>
     </div>
     <!-- OWNER: this form opens the visitor's email app. For direct submissions, point action= at a form service (e.g. Formspree) and remove the script handler. -->
     <form class="quote reveal" id="quoteForm" novalidate>
-      <h3>Request a quote</h3>
+      <h3>How can we help?</h3>
+      <div class="seg" role="radiogroup" aria-label="Request type">
+        <label><input type="radio" name="kind" value="Appointment" checked><span>Book an appointment</span></label>
+        <label><input type="radio" name="kind" value="Quote"><span>Get a quote</span></label>
+      </div>
       <div class="form-row">
         <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
         <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
@@ -744,19 +784,26 @@ footer a:hover{color:var(--orange)}
         <label for="f-service">I need help with</label>
         <select id="f-service" name="service">
           <option>Individual tax return</option>
-          <option>Business tax and BAS</option>
+          <option>Business tax return</option>
+          <option>BAS, payroll and super</option>
+          <option>Company, trust, partnership or SMSF</option>
           <option>Expat or foreign income</option>
           <option>Rental property or investments</option>
-          <option>Company, trust or SMSF</option>
-          <option>Bookkeeping and payroll</option>
-          <option>Tax planning and advisory</option>
+          <option>Late filings and amendments</option>
+          <option>Xero, software and tax planning</option>
           <option>Something else</option>
         </select>
       </div>
+      <div class="form-row" id="apptFields">
+        <div class="field"><label for="f-date">Preferred date</label><input id="f-date" name="date" type="date"></div>
+        <div class="field"><label for="f-time">Preferred time</label>
+          <select id="f-time" name="time"><option>Business hours</option><option>After hours (weekday evening)</option><option>Weekend</option><option>Any time</option></select>
+        </div>
+      </div>
       <div class="field"><label for="f-msg">Anything we should know?</label><textarea id="f-msg" name="message" placeholder="For example: two rental properties, moved from the US in 2024, have a US preparer already."></textarea></div>
-      <button class="btn btn-primary" type="submit">Send my request <svg><use href="#i-arrow"/></svg></button>
-      <p class="form-foot">Your details stay private and are only used to prepare your quote.</p>
-      <div class="form-ok" id="formOk" role="status">Thanks. Your email app should now be open with your request ready to send.</div>
+      <button class="btn btn-primary" type="submit" id="submitBtn">Book it now <svg><use href="#i-arrow"/></svg></button>
+      <p class="form-foot">Your details stay private and are only used to respond to your request.</p>
+      <div class="form-ok" id="formOk" role="status">Thanks. Your email app should now be open with your request ready to send. Prefer to talk? Call 0403 974 718.</div>
     </form>
   </div>
 </section>
@@ -768,16 +815,16 @@ footer a:hover{color:var(--orange)}
     <div class="foot-grid">
       <div>
         <div class="foot-logo"><img src="assets/logo-light.svg" alt="Insight Tax" width="174" height="38"></div>
-        <p>A boutique, registered tax practice helping individuals, small businesses and globally mobile people across Australia.</p>
+        <p>You don't have to be a tax expert. That's our job. Affordable, prompt tax services from a Brisbane CPA and Registered Tax Agent.</p>
       </div>
       <div>
         <h4>Services</h4>
         <ul>
           <li><a href="#services">Individual tax returns</a></li>
-          <li><a href="#services">Business tax and BAS</a></li>
-          <li><a href="#expats">Expat and international</a></li>
-          <li><a href="#services">Companies, trusts and SMSF</a></li>
-          <li><a href="#services">Bookkeeping and payroll</a></li>
+          <li><a href="#services">Business tax returns</a></li>
+          <li><a href="#expats">Expat and foreign income</a></li>
+          <li><a href="#services">BAS, payroll and super</a></li>
+          <li><a href="#services">Late filings and amendments</a></li>
         </ul>
       </div>
       <div>
@@ -785,30 +832,30 @@ footer a:hover{color:var(--orange)}
         <ul>
           <li><a href="#how">How it works</a></li>
           <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#team">Our team</a></li>
+          <li><a href="#team">About us</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="https://insighttax.com.au/privacy-policy-terms-of-use/">Privacy and terms</a></li>
+          <li><a href="assets/appointment-form.pdf" download>Appointment form</a></li>
         </ul>
       </div>
       <div>
         <h4>Contact</h4>
         <ul>
-          <li><a href="tel:+61403775273">0403 775 273</a></li>
-          <li><a href="mailto:info@insighttax.com.au">info@insighttax.com.au</a></li>
-          <li>24 Vaughan Drive<br>Ormeau QLD 4208</li>
+          <li><a href="tel:+61403974718">0403 974 718</a></li>
+          <li><a href="mailto:info@insightax.com.au">info@insightax.com.au</a></li>
+          <li>Brisbane, QLD</li>
         </ul>
       </div>
     </div>
-    <!-- OWNER: fill in ABN and Tax Agent Number. Add the Professional Standards Scheme line only if it applies to the practice. -->
+    <!-- OWNER: fill in the ABN, link the privacy statement, and add the Professional Standards Scheme line only if it applies. -->
     <div class="legal">
-      <span>&copy; <span id="yr">2026</span> Insight Tax. ABN [to be added]. Registered Tax Agent No. [to be added].</span>
+      <span>&copy; <span id="yr">2026</span> Insight Tax. ABN [to be added]. Registered Tax Agent 75496000.</span>
       <span>General information only. Not advice for your specific circumstances.</span>
     </div>
   </div>
 </footer>
 
 <div class="mobile-cta">
-  <a class="btn btn-ghost" href="tel:+61403775273"><svg><use href="#i-phone"/></svg>Call</a>
+  <a class="btn btn-ghost" href="tel:+61403974718"><svg><use href="#i-phone"/></svg>Call</a>
   <a class="btn btn-primary" href="#contact">Get a quote</a>
 </div>
 
@@ -851,11 +898,26 @@ footer a:hover{color:var(--orange)}
     var name=form.name.value.trim(),email=form.email.value.trim();
     if(!name){form.name.focus();form.name.setCustomValidity('Please enter your name');form.name.reportValidity();form.name.setCustomValidity('');return}
     if(!email||!/^\S+@\S+\.\S+$/.test(email)){form.email.focus();form.email.setCustomValidity('Please enter a valid email');form.email.reportValidity();form.email.setCustomValidity('');return}
-    var body='Name: '+name+'\nEmail: '+email+'\nPhone: '+form.phone.value.trim()+'\nService: '+select.value+'\n\n'+form.message.value.trim();
-    window.location.href='mailto:info@insighttax.com.au?subject='+encodeURIComponent('Quote request: '+select.value)+'&body='+encodeURIComponent(body);
+    var kind=form.querySelector('input[name=kind]:checked').value;
+    var body='Request: '+kind+'\nName: '+name+'\nEmail: '+email+'\nPhone: '+form.phone.value.trim()+'\nService: '+select.value;
+    if(kind==='Appointment'){body+='\nPreferred date: '+(form.date.value||'Flexible')+'\nPreferred time: '+form.time.value}
+    body+='\n\n'+form.message.value.trim();
+    window.location.href='mailto:info@insightax.com.au?subject='+encodeURIComponent(kind+' request: '+select.value)+'&body='+encodeURIComponent(body);
     document.getElementById('formOk').style.display='block';
   });
 
+  var appt=document.getElementById('apptFields'),sub=document.getElementById('submitBtn');
+  form.querySelectorAll('input[name=kind]').forEach(function(r){
+    r.addEventListener('change',function(){
+      var isAppt=r.value==='Appointment'&&r.checked;
+      if(!r.checked)return;
+      appt.style.display=isAppt?'':'none';
+      sub.firstChild.nodeValue=isAppt?'Book it now ':'Get my quote ';
+    });
+  });
+  document.querySelectorAll('a[href="#contact"][data-service]').forEach(function(a){
+    a.addEventListener('click',function(){var q=form.querySelector('input[value=Quote]');q.checked=true;q.dispatchEvent(new Event('change'))});
+  });
   document.getElementById('yr').textContent=new Date().getFullYear();
 
   var els=document.querySelectorAll('.reveal');
