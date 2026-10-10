@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 440" role="img" aria-label="Illustration showing an overseas tax return and an Australian tax return kept in line with each other">
+  <defs>
+    <filter id="s2" x="-20%" y="-20%" width="140%" height="150%">
+      <feDropShadow dx="0" dy="12" stdDeviation="14" flood-color="#000" flood-opacity="0.28"/>
+    </filter>
+  </defs>
+  <!-- dotted world -->
+  <g fill="#ffffff" opacity="0.08">
+    <circle cx="80" cy="80" r="3"/><circle cx="96" cy="80" r="3"/><circle cx="112" cy="80" r="3"/><circle cx="128" cy="88" r="3"/>
+    <circle cx="72" cy="96" r="3"/><circle cx="88" cy="96" r="3"/><circle cx="104" cy="96" r="3"/><circle cx="120" cy="104" r="3"/>
+    <circle cx="96" cy="112" r="3"/><circle cx="112" cy="120" r="3"/><circle cx="120" cy="136" r="3"/>
+    <circle cx="420" cy="300" r="3"/><circle cx="436" cy="300" r="3"/><circle cx="452" cy="300" r="3"/><circle cx="468" cy="308" r="3"/>
+    <circle cx="412" cy="316" r="3"/><circle cx="428" cy="316" r="3"/><circle cx="444" cy="316" r="3"/><circle cx="460" cy="316" r="3"/><circle cx="476" cy="324" r="3"/>
+    <circle cx="428" cy="332" r="3"/><circle cx="444" cy="332" r="3"/><circle cx="460" cy="332" r="3"/><circle cx="452" cy="348" r="3"/>
+  </g>
+  <!-- flight path -->
+  <path d="M150 150 C 260 40, 420 120, 420 270" stroke="#ff8a1f" stroke-width="3" fill="none" stroke-dasharray="7 8" stroke-linecap="round"/>
+  <g transform="translate(340 108) rotate(40)">
+    <path d="M0 -14 L4 -4 L16 2 L16 6 L4 3 L3 12 L7 15 L7 18 L0 16 L-7 18 L-7 15 L-3 12 L-4 3 L-16 6 L-16 2 L-4 -4 Z" fill="#ffffff"/>
+  </g>
+
+  <!-- overseas card -->
+  <g filter="url(#s2)" transform="translate(30 150)">
+    <rect width="220" height="190" rx="20" fill="#173a63"/>
+    <rect x="20" y="20" width="72" height="24" rx="12" fill="#ffffff" fill-opacity="0.12"/>
+    <text x="56" y="37" text-anchor="middle" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="11" font-weight="700" fill="#cfe0f5" letter-spacing="1">OVERSEAS</text>
+    <text x="20" y="76" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="17" font-weight="800" fill="#ffffff">Home country return</text>
+    <text x="20" y="98" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="12" font-weight="500" fill="#9fb6d3">Your existing expat provider</text>
+    <rect x="20" y="118" width="180" height="9" rx="4.5" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="20" y="136" width="140" height="9" rx="4.5" fill="#ffffff" fill-opacity="0.12"/>
+    <rect x="20" y="154" width="160" height="9" rx="4.5" fill="#ffffff" fill-opacity="0.12"/>
+  </g>
+
+  <!-- australia card -->
+  <g filter="url(#s2)" transform="translate(300 210)">
+    <rect width="230" height="200" rx="20" fill="#ffffff"/>
+    <rect x="20" y="20" width="84" height="24" rx="12" fill="#fff1e3"/>
+    <text x="62" y="37" text-anchor="middle" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="11" font-weight="700" fill="#c4620a" letter-spacing="1">AUSTRALIA</text>
+    <text x="20" y="76" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="17" font-weight="800" fill="#0f2a4a">Australian tax return</text>
+    <text x="20" y="98" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="12" font-weight="600" fill="#5b6b80">Insight Tax</text>
+    <g font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="12" font-weight="600" fill="#0f2a4a">
+      <circle cx="28" cy="126" r="8" fill="#e3f6ec"/><path d="M24 126.5 l2.5 2.5 l5 -5.5" stroke="#1f9d5a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <text x="44" y="130">Residency position</text>
+      <circle cx="28" cy="152" r="8" fill="#e3f6ec"/><path d="M24 152.5 l2.5 2.5 l5 -5.5" stroke="#1f9d5a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <text x="44" y="156">Foreign income tax offset</text>
+      <circle cx="28" cy="178" r="8" fill="#e3f6ec"/><path d="M24 178.5 l2.5 2.5 l5 -5.5" stroke="#1f9d5a" stroke-width="2" fill="none" stroke-linecap="round"/>
+      <text x="44" y="182">Figures matched both sides</text>
+    </g>
+  </g>
+
+  <!-- link chip -->
+  <g filter="url(#s2)" transform="translate(196 356)">
+    <rect width="132" height="44" rx="22" fill="#ff8a1f"/>
+    <path d="M22 22 a7 7 0 0 1 7 -7 h6 a7 7 0 0 1 0 14 h-3 M40 22 a7 7 0 0 1 -7 7 h-6 a7 7 0 0 1 0 -14 h3" stroke="#fff" stroke-width="2.6" fill="none" stroke-linecap="round"/>
+    <text x="54" y="27" font-family="'Plus Jakarta Sans',Arial,sans-serif" font-size="13" font-weight="800" fill="#ffffff">In sync</text>
+  </g>
+</svg>
