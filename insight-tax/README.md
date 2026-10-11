@@ -7,6 +7,9 @@ Single-page site for Insight Tax (insightax.com.au), Robert Avey, CPA and Regist
 - `assets/brand/insightax-logo.png`, `assets/brand/insightax-logo-light.png`: the practice's logo (light version has white lettering for the footer)
 - `assets/brand/tpb-registered.png`, `cpa-australia.png`, `xero-certified-advisor.png`: credential badges supplied by the practice
 - `assets/brand/tax-technology.webp`: photo used in the in-house software section
+- `assets/brand/business-team.webp`: photo banner in the Business Tax group
+- `assets/brand/scene-*.png`: the practice's service illustrations (Individual, Business, Income Tax Returns groups)
+- `assets/brand/value-*.webp`: the practice's Affordable / Fast Turnaround / Problem Free graphics, cropped so the captions are live text
 - `assets/favicon.svg`, `assets/apple-touch-icon.png`: browser and phone icons
 - `assets/hero.svg`, `assets/expat.svg`: custom section illustrations
 - `assets/illustrations/`: unDraw illustrations recoloured to the brand palette (services groups, steps, why, pricing, reviews, about avatar, FAQ, contact)
