@@ -4,10 +4,12 @@ Single-page site for Insight Tax (insightax.com.au), Robert Avey, CPA and Regist
 
 ## Files
 - `index.html`: the full page (inline CSS and JS)
-- `assets/logo.svg`, `assets/logo-light.svg`: eye-mark logo for light and dark backgrounds
+- `assets/brand/insightax-logo.png`, `assets/brand/insightax-logo-light.png`: the practice's logo (light version has white lettering for the footer)
+- `assets/brand/tpb-registered.png`, `cpa-australia.png`, `xero-certified-advisor.png`: credential badges supplied by the practice
+- `assets/brand/tax-technology.webp`: photo used in the in-house software section
 - `assets/favicon.svg`, `assets/apple-touch-icon.png`: browser and phone icons
 - `assets/hero.svg`, `assets/expat.svg`: custom section illustrations
-- `assets/illustrations/`: unDraw illustrations recoloured to the brand palette (services groups, steps, why, software, pricing, reviews, about avatar, FAQ, contact)
+- `assets/illustrations/`: unDraw illustrations recoloured to the brand palette (services groups, steps, why, pricing, reviews, about avatar, FAQ, contact)
 - `assets/og-image.png`: 1200x630 preview image for link sharing
 
 ## Fill in before going live (search the HTML for `OWNER:`)
@@ -15,7 +17,7 @@ Single-page site for Insight Tax (insightax.com.au), Robert Avey, CPA and Regist
 2. Testimonials: the three reviews are samples. Replace with real client reviews (with permission) and delete the placeholder tags.
 3. Pricing: add starting prices if desired, or keep the "Fixed fee" wording.
 4. Headshot: replace the illustrated avatar in the About section with a photo of Robert.
-5. Badges: official TPB, CPA Australia and Xero Certified Advisor badges can replace the credential icons, used under each body's logo rules.
+5. Badges: the TPB, CPA Australia and Xero Certified Advisor badges are in place; keep them current with each body's logo rules.
 6. Appointments use the practice's Google Form, embedded in the contact section and linked from the steps, FAQ and footer. The form must stay set to accept responses without sign-in for the embed to work. The separate "Get a quote" tab opens the visitor's email app addressed to info@insightax.com.au; connect a form service (Formspree, etc.) for direct submissions.
 7. Software section: confirm the three claims about the in-house tax preparation software are accurate.
 8. Expat section: confirm the practice is comfortable advertising foreign income and residency work.

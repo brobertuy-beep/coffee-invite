@@ -23,6 +23,7 @@
   "@type": "AccountingService",
   "name": "Insight Tax",
   "url": "https://insightax.com.au/",
+  "logo": "https://insightax.com.au/assets/brand/insightax-logo.png",
   "email": "info@insightax.com.au",
   "telephone": "+61403974718",
   "address": {
@@ -93,7 +94,7 @@ p{margin:0 0 1em}
 header.site{position:-webkit-sticky;position:sticky;top:0;z-index:50;background:rgba(255,255,255,.94);-webkit-backdrop-filter:saturate(180%) blur(10px);backdrop-filter:saturate(180%) blur(10px);border-bottom:1px solid transparent;transition:border-color .2s,box-shadow .2s}
 header.site.scrolled{border-color:var(--line);box-shadow:0 4px 20px -12px rgba(15,42,74,.25)}
 .nav{display:flex;align-items:center;justify-content:space-between;height:76px;gap:20px}
-.logo img{height:40px;width:auto}
+.logo img{height:66px;width:auto}
 .nav-links{display:flex;gap:28px;list-style:none;margin:0;padding:0}
 .nav-links a{text-decoration:none;font-weight:600;font-size:.95rem;color:var(--ink);opacity:.85}
 .nav-links a:hover{opacity:1;color:var(--orange-d)}
@@ -128,6 +129,7 @@ header.site.scrolled{border-color:var(--line);box-shadow:0 4px 20px -12px rgba(1
 .creds-title{grid-column:1/-1;text-align:center}
 .creds-title{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
 .cred{display:flex;align-items:center;gap:10px;font-weight:700;color:var(--navy);font-size:.95rem}
+.cred-badge img{height:71px;width:auto}
 .cred-ic{width:38px;height:38px;border-radius:10px;background:var(--bg-soft);display:grid;place-items:center;color:var(--navy)}
 .cred-ic svg{width:20px;height:20px}
 
@@ -200,6 +202,13 @@ header.site.scrolled{border-color:var(--line);box-shadow:0 4px 20px -12px rgba(1
 .ticks svg{flex:none;width:22px;height:22px;color:var(--orange);margin-top:2px}
 .callout{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.14);border-radius:var(--radius);padding:20px 22px;margin-bottom:28px;font-size:.98rem}
 .callout strong{color:#fff}
+
+/* photo card */
+.photo-card{position:relative;border-radius:24px;overflow:hidden;box-shadow:var(--shadow);aspect-ratio:4/3;background:var(--navy)}
+.photo-card img{width:100%;height:100%;object-fit:cover;object-position:45% 50%;display:block}
+.photo-chip{position:absolute;left:18px;bottom:18px;display:flex;align-items:center;gap:8px;background:#fff;color:var(--navy);font-weight:700;font-size:.9rem;padding:10px 16px;border-radius:999px;box-shadow:var(--shadow-sm)}
+.photo-chip svg{width:18px;height:18px;color:var(--orange)}
+@supports not (aspect-ratio:1/1){.photo-card{height:340px}}
 
 /* split bands */
 .split{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
@@ -344,7 +353,7 @@ footer h4{color:#fff;font-size:.95rem;margin-bottom:14px}
 footer ul{list-style:none;margin:0;padding:0;display:grid;gap:8px}
 footer a{text-decoration:none;color:#cfe0f5}
 footer a:hover{color:var(--orange)}
-.foot-logo img{height:38px;width:auto;margin-bottom:16px}
+.foot-logo img{height:64px;width:auto;margin-bottom:16px}
 .legal{border-top:1px solid rgba(255,255,255,.1);margin-top:48px;padding-top:22px;display:flex;flex-wrap:wrap;justify-content:space-between;gap:12px;font-size:.82rem}
 
 /* mobile sticky cta */
@@ -395,6 +404,9 @@ h1,h2,h3,h4{overflow-wrap:break-word}
 @media (max-width:640px){
   body{font-size:16px;padding-bottom:calc(76px + env(safe-area-inset-bottom))}
   .svc-head-art{display:none}
+  .logo img{height:58px}
+  .nav{height:72px}
+  .nav-links.open{top:72px}
   .why-art,.sec-art{height:120px}
   .wrap{padding:0 16px}
   .hero{padding:32px 0 56px}
@@ -405,6 +417,9 @@ h1,h2,h3,h4{overflow-wrap:break-word}
   .svc-group{padding-top:56px}
   .svc-head h3,.svc-hero h3{font-size:1.4rem}
   .creds-title{text-align:left}
+  .creds .wrap{grid-template-columns:repeat(3,auto);justify-content:start;gap:16px 22px}
+  .creds-title,.creds .cred{grid-column:1/-1}
+  .cred-badge img{height:56px}
   .section-head{margin-bottom:36px}
   .creds .wrap{justify-content:flex-start}
   .compare th,.compare td{padding:12px 8px;font-size:.85rem}
@@ -438,7 +453,7 @@ h1,h2,h3,h4{overflow-wrap:break-word}
   .wrap{padding:0 12px}
   h1{font-size:1.75rem}
   .hero h1 .hl{white-space:normal}
-  .logo img{height:34px}
+  .logo img{height:52px}
   .compare th,.compare td{padding:9px 4px;font-size:.72rem}
   .mobile-cta .btn{font-size:.88rem;padding:12px 6px}
   .compare th:nth-child(3),.compare td:nth-child(3){display:none}
@@ -487,7 +502,7 @@ h1,h2,h3,h4{overflow-wrap:break-word}
 
 <header class="site" id="top">
   <div class="wrap nav">
-    <a href="#top" class="logo" aria-label="Insight Tax home"><img src="assets/logo.svg" alt="Insight Tax" width="183" height="40"></a>
+    <a href="#top" class="logo" aria-label="Insight Tax home"><img src="assets/brand/insightax-logo.png" alt="insightax" width="132" height="66"></a>
     <nav aria-label="Main">
       <ul class="nav-links" id="navLinks">
         <li><a href="#services">Services</a></li>
@@ -546,14 +561,13 @@ h1,h2,h3,h4{overflow-wrap:break-word}
 </section>
 
 <!-- CREDENTIALS -->
-<!-- OWNER: official TPB, CPA Australia and Xero Certified Advisor badges can replace these icons, used under each body's logo rules. -->
 <section class="creds" aria-label="Credentials">
   <div class="wrap">
     <span class="creds-title">Qualified. Registered. Accountable.</span>
-    <span class="cred"><span class="cred-ic"><svg><use href="#i-shield"/></svg></span>TPB Registered Tax Agent 75496000</span>
-    <span class="cred"><span class="cred-ic"><svg><use href="#i-badge"/></svg></span>CPA Australia</span>
-    <span class="cred"><span class="cred-ic"><svg><use href="#i-book"/></svg></span>Xero Certified Advisor</span>
-    <span class="cred"><span class="cred-ic"><svg><use href="#i-calendar"/></svg></span>20+ years experience</span>
+    <span class="cred-badge"><img src="assets/brand/tpb-registered.png" alt="Tax Practitioners Board registered tax agent 75496000" width="105" height="71" loading="lazy"></span>
+    <span class="cred-badge"><img src="assets/brand/cpa-australia.png" alt="CPA Australia member" width="64" height="71" loading="lazy"></span>
+    <span class="cred-badge"><img src="assets/brand/xero-certified-advisor.png" alt="Xero Certified Advisor" width="146" height="71" loading="lazy"></span>
+    <span class="cred"><span class="cred-ic"><svg><use href="#i-calendar"/></svg></span>20+ years in Australian tax</span>
   </div>
 </section>
 
@@ -834,7 +848,10 @@ h1,h2,h3,h4{overflow-wrap:break-word}
         <div class="feature"><div class="ic"><svg><use href="#i-lock"/></svg></div><div><h3>Your details recorded securely</h3><p>Information from your appointment form goes straight into our secure database.</p></div></div>
       </div>
     </div>
-    <div class="split-art reveal"><img src="assets/illustrations/software.svg" alt="Illustration of a person reviewing documents that have been checked off" width="560" height="420" loading="lazy"></div>
+    <div class="photo-card reveal">
+      <img src="assets/brand/tax-technology.webp" alt="Hands typing on a laptop with digital tax icons overlaid" width="1200" height="444" loading="lazy">
+      <span class="photo-chip"><svg><use href="#i-monitor"/></svg>Built in-house</span>
+    </div>
   </div>
 </section>
 
@@ -1075,7 +1092,7 @@ h1,h2,h3,h4{overflow-wrap:break-word}
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-logo"><img src="assets/logo-light.svg" alt="Insight Tax" width="174" height="38"></div>
+        <div class="foot-logo"><img src="assets/brand/insightax-logo-light.png" alt="insightax" width="128" height="64" loading="lazy"></div>
         <p>You don't have to be a tax expert. That's our job. Affordable, prompt tax services from a Brisbane CPA and Registered Tax Agent.</p>
       </div>
       <div>
