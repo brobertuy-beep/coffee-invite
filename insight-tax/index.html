@@ -149,6 +149,46 @@ header.site.scrolled{border-color:var(--line);box-shadow:0 4px 20px -12px rgba(1
 .entities span:not(.entities-title){background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:8px 16px;font-weight:700;color:var(--navy);font-size:.92rem}
 .entities small{font-weight:500;color:var(--muted)}
 
+/* services groups */
+.svc-tabs{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:-16px 0 8px}
+.svc-tabs a{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-weight:700;font-size:.92rem;color:var(--navy);background:var(--bg-soft);border:1px solid var(--line);border-radius:999px;padding:10px 18px;transition:background .15s,color .15s}
+.svc-tabs a span{color:var(--orange-d);font-size:.8rem}
+.svc-tabs a:hover{background:var(--navy);color:#fff}
+.svc-tabs a:hover span{color:var(--orange)}
+.svc-group{padding-top:72px}
+.svc-num{display:inline-grid;place-items:center;width:46px;height:46px;border-radius:14px;background:var(--navy);color:#fff;font-weight:800;font-size:.95rem;flex:none}
+.svc-head{display:flex;gap:18px;align-items:center;margin-bottom:28px}
+.svc-head h3,.svc-hero h3{font-size:1.7rem;margin:0 0 4px}
+.svc-head p{margin:0;color:var(--muted)}
+.svc-hero{display:grid;grid-template-columns:.9fr 1.1fr;gap:56px;align-items:center;background:var(--bg-soft);border:1px solid var(--line);border-radius:26px;padding:44px}
+.svc-hero .svc-num{margin-bottom:16px}
+.svc-hero p{color:var(--muted);font-size:1.05rem}
+.svc-hero-art img{width:100%;height:auto;max-height:300px;object-fit:contain}
+.tiles{display:grid;gap:20px}
+.tiles-5{grid-template-columns:repeat(5,1fr)}
+.tiles-2{grid-template-columns:1fr 1fr}
+.tile{background:#fff;border:1px solid var(--line);border-radius:var(--radius);padding:24px;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+.tile:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:transparent}
+.tile .ic{width:48px;height:48px;margin-bottom:16px}
+.tile .ic svg{width:24px;height:24px}
+.tile h4{font-size:1.05rem;margin:0 0 8px}
+.tile p{color:var(--muted);font-size:.93rem;margin:0 0 12px;flex:1}
+.tile .card-link{margin-top:auto}
+.entities-grid{display:grid;grid-template-columns:repeat(5,1fr);border:2px solid var(--navy);border-radius:22px;overflow:hidden;background:#fff}
+.entity{padding:28px 20px;text-align:center;border-right:1px solid var(--line)}
+.entity:nth-child(even){background:#eef4fa}
+.entity:last-child{border-right:0}
+.entity .ic{margin:0 auto 14px;background:var(--navy);color:#fff}
+.entity h4{font-size:1.1rem;margin:0}
+.entity-sub{display:block;font-size:.82rem;font-weight:700;color:var(--orange-d);min-height:1.3em;margin:2px 0 10px}
+.entity p{color:var(--muted);font-size:.9rem;margin:0}
+.svc-cta{text-align:center;margin:28px 0 0}
+.ext-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:28px;align-items:stretch}
+.ext-art{position:relative;background:linear-gradient(160deg,#eef4fa,#fff1e3);border-radius:22px;display:grid;place-items:center;padding:28px}
+.ext-art img{width:100%;max-height:330px;object-fit:contain}
+.ext-badge{position:absolute;left:20px;bottom:20px;display:flex;align-items:center;gap:8px;background:var(--navy);color:#fff;font-weight:700;font-size:.9rem;padding:10px 16px;border-radius:999px;box-shadow:var(--shadow-sm)}
+.ext-badge svg{width:18px;height:18px;color:var(--orange)}
+
 /* expat band */
 .expat{background:radial-gradient(1200px 500px at 85% 0%,#1d4677 0%,transparent 60%),var(--navy);color:#cfe0f5;position:relative;overflow:hidden}
 .expat h2,.expat h3{color:#fff}
@@ -280,7 +320,12 @@ form.quote .btn{width:100%;margin-top:4px}
 .form-foot{font-size:.82rem;color:var(--muted);text-align:center;margin:14px 0 0}
 .form-ok{display:none;background:#e3f6ec;color:#11683a;border-radius:12px;padding:14px;font-weight:600;font-size:.95rem;margin-top:14px}
 
+.panel{background:#fff;border-radius:22px;padding:22px;box-shadow:0 30px 60px -30px rgba(0,0,0,.5);color:var(--body)}
+.panel form.quote{box-shadow:none;padding:12px 12px 4px}
+.gform{display:block;width:100%;height:900px;border:0;border-radius:14px;background:var(--bg-soft)}
 .seg{display:grid;grid-template-columns:1fr 1fr;gap:6px;background:var(--bg-soft);border-radius:14px;padding:5px;margin-bottom:18px}
+.seg button{font:inherit;border:0;background:none;cursor:pointer;padding:11px 8px;border-radius:10px;font-weight:700;font-size:.92rem;color:var(--muted)}
+.seg button[aria-selected="true"]{background:#fff;color:var(--navy);box-shadow:var(--shadow-sm)}
 .seg label{cursor:pointer}
 .seg input{position:absolute;opacity:0;pointer-events:none}
 .seg span{display:block;text-align:center;padding:10px 8px;border-radius:10px;font-weight:700;font-size:.92rem;color:var(--muted)}
@@ -316,7 +361,12 @@ footer a:hover{color:var(--orange)}
 }
 @media (max-width:960px){
   .section{padding:72px 0}
-  .hero-grid,.expat-grid,.why-grid,.contact-grid,.about-grid,.split{grid-template-columns:1fr}
+  .hero-grid,.expat-grid,.why-grid,.contact-grid,.about-grid,.split,.svc-hero,.ext-grid{grid-template-columns:1fr}
+  .tiles-5{grid-template-columns:repeat(3,1fr)}
+  .entities-grid{grid-template-columns:repeat(3,1fr)}
+  .entity{border-bottom:1px solid var(--line)}
+  .svc-hero{padding:32px}
+  .svc-hero-art{max-width:380px}
   .split-art{max-width:460px;margin:0 auto}
   .contact-art{display:none}
   .hero-art{max-width:480px;margin:0 auto}
@@ -335,12 +385,20 @@ footer a:hover{color:var(--orange)}
   body{font-size:16px;padding-bottom:76px}
   .wrap{padding:0 16px}
   .hero{padding:32px 0 56px}
-  .grid-3,.reviews,.team,.pricing,.steps,.ticks,.form-row,.foot-grid,.creds .wrap{grid-template-columns:1fr}
+  .grid-3,.reviews,.team,.pricing,.steps,.ticks,.form-row,.foot-grid,.creds .wrap,.tiles-5,.tiles-2{grid-template-columns:1fr}
+  .entities-grid{grid-template-columns:1fr 1fr}
+  .entity{border-right:1px solid var(--line)}
+  .svc-hero{padding:24px}
+  .svc-group{padding-top:56px}
+  .svc-head h3,.svc-hero h3{font-size:1.4rem}
   .creds-title{text-align:left}
   .section-head{margin-bottom:36px}
   .creds .wrap{justify-content:flex-start}
   .compare th,.compare td{padding:12px 8px;font-size:.85rem}
   form.quote{padding:24px}
+  .panel{padding:14px}
+  .panel form.quote{padding:8px 4px 0}
+  .gform{height:760px}
   .mobile-cta{display:flex;gap:10px;position:fixed;left:0;right:0;bottom:0;z-index:60;background:#fff;border-top:1px solid var(--line);padding:10px 16px;box-shadow:0 -8px 24px -12px rgba(15,42,74,.3)}
   .mobile-cta .btn{flex:1;padding:13px 10px;font-size:.95rem}
   .topbar{font-size:.8rem}
@@ -370,6 +428,14 @@ footer a:hover{color:var(--orange)}
     <symbol id="i-chat" viewBox="0 0 24 24"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3h11A2.5 2.5 0 0 1 20 5.5v8a2.5 2.5 0 0 1-2.5 2.5H10l-5 4.5V16h0a2.5 2.5 0 0 1-1-2V5.5z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
     <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3.5" y="5" width="17" height="15.5" rx="2.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3.5 10h17M8 3v4M16 3v4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
     <symbol id="i-badge" viewBox="0 0 24 24"><circle cx="12" cy="9" r="6" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8.5 14l-1.5 7 5-2.5 5 2.5-1.5-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-monitor" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="12" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M8 20h8M12 16v4M9 9l-2 1.5L9 12M15 9l2 1.5-2 1.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+    <symbol id="i-receipt" viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M9 8h6M9 12h6M9 16h3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-dollar" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M15 8.5c-.6-.9-1.7-1.5-3-1.5-1.7 0-3 .9-3 2.3 0 3.2 6 1.8 6 5 0 1.4-1.3 2.3-3 2.3-1.3 0-2.5-.6-3-1.6M12 5.5v13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-users" viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/><path d="M2.5 20c.8-3.5 3.3-5.5 6.5-5.5s5.7 2 6.5 5.5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M16 4.8a3.5 3.5 0 0 1 0 6.4M18 14.8c1.8.8 3 2.6 3.5 5.2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-handshake" viewBox="0 0 24 24"><path d="M2 11l4-4 4 2 3-2 4 1 5 4M2 11l3 3M22 11l-3 3-5 4-3-2-4-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M10 9l-2 3 3 1 2-2" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+    <symbol id="i-file" viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M14 3v4h4M9 12h6M9 16h6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-piggy" viewBox="0 0 24 24"><path d="M4 12a7 6 0 0 1 12-4h2l1 3 2 1v3l-2 1-1 3h-3v-2h-5v2H7l-1-3a6 6 0 0 1-2-4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><circle cx="15" cy="11" r="1" fill="currentColor"/><path d="M9 7.5h4" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></symbol>
+    <symbol id="i-edit" viewBox="0 0 24 24"><path d="M4 20h4L19 9l-4-4L4 16v4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path d="M13.5 6.5l4 4" stroke="currentColor" stroke-width="2"/></symbol>
     <symbol id="i-menu" viewBox="0 0 24 24"><path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></symbol>
   </defs>
 </svg>
@@ -413,12 +479,12 @@ footer a:hover{color:var(--orange)}
         <div class="picker-label" id="pickerLabel">What do you need help with?</div>
         <div class="chips" id="chips">
           <button type="button" class="chip" aria-pressed="false" data-value="Individual tax return">Personal tax return</button>
-          <button type="button" class="chip" aria-pressed="false" data-value="Business tax return">Business tax return</button>
-          <button type="button" class="chip" aria-pressed="false" data-value="Expat or foreign income">Expat or foreign income</button>
-          <button type="button" class="chip" aria-pressed="false" data-value="Rental property or investments">Rental or investments</button>
+          <button type="button" class="chip" aria-pressed="false" data-value="Business tax return">Business tax</button>
+          <button type="button" class="chip" aria-pressed="false" data-value="BAS lodgements">BAS lodgements</button>
           <button type="button" class="chip" aria-pressed="false" data-value="Company, trust, partnership or SMSF">Company, trust or SMSF</button>
-          <button type="button" class="chip" aria-pressed="false" data-value="BAS, payroll and super">BAS and payroll</button>
-          <button type="button" class="chip" aria-pressed="false" data-value="Late filings and amendments">Late returns</button>
+          <button type="button" class="chip" aria-pressed="false" data-value="Expat or foreign income">Expat or foreign income</button>
+          <button type="button" class="chip" aria-pressed="false" data-value="Late filings">Late filings</button>
+          <button type="button" class="chip" aria-pressed="false" data-value="Amendments">Amendments</button>
         </div>
         <div class="picker-actions">
           <a href="#contact" class="btn btn-primary" id="pickerGo">Get my fixed-fee quote <svg><use href="#i-arrow"/></svg></a>
@@ -454,61 +520,157 @@ footer a:hover{color:var(--orange)}
 <section class="section" id="services">
   <div class="wrap">
     <div class="section-head reveal">
-      <span class="eyebrow">What we do</span>
-      <h2>Tax returns done properly, at a fair price</h2>
-      <p>For tasks you don't enjoy, or that eat into time you don't have. We deliver prompt, affordable tax services in Brisbane and online, so you stop losing valuable time.</p>
+      <span class="eyebrow">Our services</span>
+      <h2>The right help for your situation</h2>
+      <p>For tasks you don't enjoy, or that eat into time you don't have. Pick what fits: a personal return, ongoing business support, a return for your structure, or help when something comes up.</p>
     </div>
-    <div class="grid-3">
-      <article class="card reveal">
-        <div class="ic"><svg><use href="#i-user"/></svg></div>
-        <h3>Individual tax returns</h3>
-        <p>We work hard to maximise your tax position so you get the refund you are entitled to.</p>
-        <ul><li>Salary, wages and work deductions</li><li>Sole traders</li><li>Rental properties, shares and capital gains</li></ul>
-        <a class="card-link" href="#contact" data-service="Individual tax return">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card reveal">
-        <div class="ic"><svg><use href="#i-briefcase"/></svg></div>
-        <h3>Business tax and BAS</h3>
-        <p>Keep your business compliant and your cash moving, with a qualified tax agent on hand.</p>
-        <ul><li>BAS lodgements</li><li>Cashflow management</li><li>Payroll and super</li></ul>
-        <a class="card-link" href="#contact" data-service="BAS, payroll and super">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card reveal">
-        <div class="ic"><svg><use href="#i-building"/></svg></div>
-        <h3>Companies, trusts and SMSF</h3>
-        <p>Annual returns for every common structure, prepared and lodged on time.</p>
-        <ul><li>Companies and partnerships</li><li>Trusts, including deceased estates</li><li>Complying SMSFs</li></ul>
-        <a class="card-link" href="#contact" data-service="Company, trust, partnership or SMSF">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card reveal">
-        <div class="ic"><svg><use href="#i-globe"/></svg></div>
-        <h3>Expat and foreign income</h3>
-        <p>Moving to Australia, leaving it, or earning from both sides. We work out where you stand.</p>
-        <ul><li>Tax residency questions</li><li>Foreign income and tax offsets</li><li>Australian income while abroad</li></ul>
-        <a class="card-link" href="#expats">Learn more <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card reveal">
-        <div class="ic"><svg><use href="#i-calendar"/></svg></div>
-        <h3>Late filings and amendments</h3>
-        <p>No matter what state your records are in, we tidy up past years and bring you up to date.</p>
-        <ul><li>Overdue returns lodged</li><li>Amendments to past returns</li><li>ATO letters and enquiries</li></ul>
-        <a class="card-link" href="#contact" data-service="Late filings and amendments">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
-      </article>
-      <article class="card reveal">
-        <div class="ic"><svg><use href="#i-chart"/></svg></div>
-        <h3>Xero and tax planning</h3>
-        <p>Xero Certified Advisor support for your books, plus timely tax-saving guidance.</p>
-        <ul><li>Xero setup and clean-up</li><li>Records ready for tax time</li><li>Pre-30 June tax planning</li></ul>
-        <a class="card-link" href="#contact" data-service="Xero and tax planning">Get a quote <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
-      </article>
+    <nav class="svc-tabs reveal" aria-label="Service groups">
+      <a href="#svc-individual"><span>01</span>Individual Tax Return</a>
+      <a href="#svc-business"><span>02</span>Business Tax</a>
+      <a href="#svc-structures"><span>03</span>Income Tax Returns</a>
+      <a href="#svc-extended"><span>04</span>Extended Support</a>
+    </nav>
+
+    <!-- 01 Individual -->
+    <div class="svc-group" id="svc-individual">
+      <div class="svc-hero reveal">
+        <div class="svc-hero-art"><img src="assets/illustrations/plan-individual.svg" alt="Illustration of a person working out figures on a large calculator" loading="lazy"></div>
+        <div>
+          <span class="svc-num">01</span>
+          <h3>Individual Tax Return</h3>
+          <p>We work hard to maximise your tax position, so you get the refund you are entitled to without the guesswork. Quick appointments, and when a refund is available we avoid delay.</p>
+          <ul class="ticks dark">
+            <li><svg><use href="#i-check"/></svg>Salary, wages and allowances</li>
+            <li><svg><use href="#i-check"/></svg>Work-related deductions</li>
+            <li><svg><use href="#i-check"/></svg>Rental properties and shares</li>
+            <li><svg><use href="#i-check"/></svg>Capital gains</li>
+            <li><svg><use href="#i-check"/></svg>Foreign income and residency</li>
+            <li><svg><use href="#i-check"/></svg>Private health and Medicare</li>
+          </ul>
+          <a href="#contact" class="btn btn-primary" data-service="Individual tax return">Book my tax return <svg><use href="#i-arrow"/></svg></a>
+        </div>
+      </div>
     </div>
-    <div class="entities reveal">
-      <span class="entities-title">Income tax returns for</span>
-      <span>Individuals <small>incl. sole traders</small></span>
-      <span>Partnerships</span>
-      <span>Trusts <small>incl. deceased estates</small></span>
-      <span>Companies</span>
-      <span>Complying SMSFs</span>
+
+    <!-- 02 Business -->
+    <div class="svc-group" id="svc-business">
+      <div class="svc-head reveal">
+        <span class="svc-num">02</span>
+        <div><h3>Business Tax</h3><p>Support that matches what your business needs.</p></div>
+      </div>
+      <div class="tiles tiles-5">
+        <article class="tile reveal">
+          <div class="ic"><svg><use href="#i-monitor"/></svg></div>
+          <h4>Custom Built Software</h4>
+          <p>Your return is prepared on our own in-house tax preparation software, built for accuracy and speed.</p>
+          <a class="card-link" href="#software">How it works <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tile reveal">
+          <div class="ic"><svg><use href="#i-receipt"/></svg></div>
+          <h4>BAS Lodgements</h4>
+          <p>Accurate BAS prepared and lodged on time, so GST and PAYG never catch you out.</p>
+          <a class="card-link" href="#contact" data-service="BAS lodgements">Enquire <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tile reveal">
+          <div class="ic"><svg><use href="#i-dollar"/></svg></div>
+          <h4>Cashflow Management</h4>
+          <p>See what is coming in and going out, and set money aside for tax before it falls due.</p>
+          <a class="card-link" href="#contact" data-service="Cashflow management">Enquire <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tile reveal">
+          <div class="ic"><svg><use href="#i-users"/></svg></div>
+          <h4>Payroll &amp; Super</h4>
+          <p>Pay runs, Single Touch Payroll reporting and super obligations handled correctly.</p>
+          <a class="card-link" href="#contact" data-service="Payroll and super">Enquire <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tile reveal">
+          <div class="ic"><svg><use href="#i-shield"/></svg></div>
+          <h4>Qualified Tax Agent</h4>
+          <p>A CPA and Registered Tax Agent (75496000) looking after your business, not just a bookkeeper.</p>
+          <a class="card-link" href="#contact" data-service="Business tax return">Enquire <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        </article>
+      </div>
+    </div>
+
+    <!-- 03 Structures -->
+    <div class="svc-group" id="svc-structures">
+      <div class="svc-head reveal">
+        <span class="svc-num">03</span>
+        <div><h3>Income Tax Returns</h3><p>Prepared and lodged for every common structure.</p></div>
+      </div>
+      <div class="entities-grid">
+        <div class="entity reveal">
+          <div class="ic"><svg><use href="#i-user"/></svg></div>
+          <h4>Individuals</h4>
+          <span class="entity-sub">includes sole traders</span>
+          <p>Employees, investors and sole traders.</p>
+        </div>
+        <div class="entity reveal">
+          <div class="ic"><svg><use href="#i-handshake"/></svg></div>
+          <h4>Partnership</h4>
+          <span class="entity-sub">&nbsp;</span>
+          <p>Partnership return, with each partner's share worked out.</p>
+        </div>
+        <div class="entity reveal">
+          <div class="ic"><svg><use href="#i-file"/></svg></div>
+          <h4>Trust</h4>
+          <span class="entity-sub">includes deceased estates</span>
+          <p>Trust returns, including deceased estates.</p>
+        </div>
+        <div class="entity reveal">
+          <div class="ic"><svg><use href="#i-building"/></svg></div>
+          <h4>Company</h4>
+          <span class="entity-sub">&nbsp;</span>
+          <p>Company tax returns for small businesses.</p>
+        </div>
+        <div class="entity reveal">
+          <div class="ic"><svg><use href="#i-piggy"/></svg></div>
+          <h4>Complying SMSF</h4>
+          <span class="entity-sub">&nbsp;</span>
+          <p>Annual returns for complying self-managed super funds.</p>
+        </div>
+      </div>
+      <p class="svc-cta reveal"><a href="#contact" class="btn btn-ghost" data-service="Company, trust, partnership or SMSF">Get a quote for your structure</a></p>
+    </div>
+
+    <!-- 04 Extended -->
+    <div class="svc-group" id="svc-extended">
+      <div class="svc-head reveal">
+        <span class="svc-num">04</span>
+        <div><h3>Extended Support</h3><p>Help when you need it, including weekends and after hours.</p></div>
+      </div>
+      <div class="ext-grid">
+        <div class="ext-art reveal">
+          <img src="assets/illustrations/after-hours.svg" alt="Illustration of a person working at a desk late in the evening" loading="lazy">
+          <div class="ext-badge"><svg><use href="#i-calendar"/></svg>Weekends and after hours</div>
+        </div>
+        <div class="tiles tiles-2">
+        <article class="tile reveal">
+          <div class="ic"><svg><use href="#i-chart"/></svg></div>
+          <h4>Tax-Saving Guidance</h4>
+          <p>Timely advice before 30 June and throughout the year, so you keep more of what you earn.</p>
+          <a class="card-link" href="#contact" data-service="Tax-saving guidance">Enquire <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tile reveal">
+          <div class="ic"><svg><use href="#i-calendar"/></svg></div>
+          <h4>Late Filings</h4>
+          <p>Behind on lodgements? We tidy up past years and bring you up to date, whatever state your records are in.</p>
+          <a class="card-link" href="#contact" data-service="Late filings">Enquire <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tile reveal">
+          <div class="ic"><svg><use href="#i-edit"/></svg></div>
+          <h4>Amendments for Tax Returns</h4>
+          <p>Missed a deduction or received new information? We amend past returns with the ATO.</p>
+          <a class="card-link" href="#contact" data-service="Amendments">Enquire <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        </article>
+        <article class="tile reveal">
+          <div class="ic"><svg><use href="#i-chat"/></svg></div>
+          <h4>Ad Hoc Support</h4>
+          <p>ATO letters, a new job, a property purchase, a quick question. Ask us any time.</p>
+          <a class="card-link" href="#contact" data-service="Ad hoc support">Enquire <svg width="16" height="16"><use href="#i-arrow"/></svg></a>
+        </article>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -539,25 +701,6 @@ footer a:hover{color:var(--orange)}
   </div>
 </section>
 
-<!-- EXTENDED SUPPORT -->
-<section class="section" id="support">
-  <div class="wrap split">
-    <div class="split-art reveal"><img src="assets/illustrations/after-hours.svg" alt="Illustration of a person working at a desk late in the evening" width="560" height="420" loading="lazy"></div>
-    <div class="reveal">
-      <span class="eyebrow">Extended support</span>
-      <h2>Weekends and after hours. When it suits you.</h2>
-      <p class="big-muted">We'll assist you with timely tax-saving guidance, late filings, amendments to your tax returns and more. Most people work business hours, so we don't stop at five.</p>
-      <ul class="ticks dark">
-        <li><svg><use href="#i-check"/></svg>Weekday evening appointments</li>
-        <li><svg><use href="#i-check"/></svg>Weekend appointments</li>
-        <li><svg><use href="#i-check"/></svg>Late filings and amendments</li>
-        <li><svg><use href="#i-check"/></svg>Timely tax-saving guidance</li>
-      </ul>
-      <a href="#contact" class="btn btn-primary">Book an after-hours time <svg><use href="#i-arrow"/></svg></a>
-    </div>
-  </div>
-</section>
-
 <!-- HOW IT WORKS -->
 <section class="section soft" id="how">
   <div class="wrap">
@@ -577,7 +720,7 @@ footer a:hover{color:var(--orange)}
         <img class="step-art" src="assets/illustrations/step-form.svg" alt="Illustration of filling in a form" loading="lazy">
         <div class="step-num">2</div>
         <h3>Complete the form</h3>
-        <p>Fill in our one-page appointment form so your details are recorded correctly and your meeting runs smoothly.</p>
+        <p>Complete our short online appointment form so your details are recorded correctly and your meeting runs smoothly.</p>
       </div>
       <div class="step reveal">
         <img class="step-art" src="assets/illustrations/step-meet.svg" alt="Illustration of two people meeting" loading="lazy">
@@ -594,7 +737,7 @@ footer a:hover{color:var(--orange)}
     </div>
     <div class="steps-cta reveal">
       <a href="#contact" class="btn btn-primary">Start step one <svg><use href="#i-arrow"/></svg></a>
-      <a href="assets/appointment-form.pdf" class="btn btn-ghost" download>Download appointment form</a>
+      <a href="https://docs.google.com/forms/d/e/1FAIpQLSe2C-doF60NlEf3s1jZiqP95f9Grcc0jQEr7lWSJMmHqW3D2w/viewform" target="_blank" rel="noopener" class="btn btn-ghost">Open the appointment form</a>
     </div>
   </div>
 </section>
@@ -698,7 +841,7 @@ footer a:hover{color:var(--orange)}
           <li><svg><use href="#i-check"/></svg>Payroll, super and cashflow</li>
           <li><svg><use href="#i-check"/></svg>Tax planning meeting</li>
         </ul>
-        <a href="#contact" class="btn btn-ghost" data-service="BAS, payroll and super">Get my quote</a>
+        <a href="#contact" class="btn btn-ghost" data-service="Business tax return">Get my quote</a>
       </div>
     </div>
     <p class="pricing-note reveal">Not sure which fits? <a href="tel:+61403974718"><strong>Call 0403 974 718</strong></a> and we will tell you in two minutes.</p>
@@ -789,7 +932,7 @@ footer a:hover{color:var(--orange)}
       </details>
       <details>
         <summary>What should I bring to my appointment?</summary>
-        <p>Please <a href="assets/appointment-form.pdf" download>download the appointment form</a> and complete it beforehand so your details are recorded correctly. Bring receipts for deductions, rental and investment statements, and any foreign income records. We pre-fill most income details from the ATO.</p>
+        <p>Please complete our <a href="https://docs.google.com/forms/d/e/1FAIpQLSe2C-doF60NlEf3s1jZiqP95f9Grcc0jQEr7lWSJMmHqW3D2w/viewform" target="_blank" rel="noopener">online appointment form</a> beforehand so your details are correctly recorded in our secure database. Bring receipts for deductions, rental and investment statements, and any foreign income records. We pre-fill most income details from the ATO.</p>
       </details>
       <details>
         <summary>Is your fee tax deductible?</summary>
@@ -817,23 +960,29 @@ footer a:hover{color:var(--orange)}
     <div class="reveal">
       <span class="eyebrow">Get started</span>
       <h2>Book an appointment or get a quote</h2>
-      <p>Tell us a little about your situation and we will come back with a clear, fixed quote. No obligation, no hard sell. Booking an appointment? Please complete the appointment form first.</p>
+      <p>Please complete the appointment form before your appointment so your details are correctly recorded in our secure database. It lets us give you a more efficient, personalised service on the day.</p>
+      <p>Just want a price first? Switch to "Get a quote" and we will come back with a clear, fixed quote.</p>
       <ul class="contact-list">
         <li><span class="c-ic"><svg><use href="#i-phone"/></svg></span><a href="tel:+61403974718">0403 974 718</a></li>
         <li><span class="c-ic"><svg><use href="#i-mail"/></svg></span><a href="mailto:info@insightax.com.au">info@insightax.com.au</a></li>
         <li><span class="c-ic"><svg><use href="#i-pin"/></svg></span><span>Brisbane, QLD, and online Australia-wide</span></li>
+        <li><span class="c-ic"><svg><use href="#i-calendar"/></svg></span><span>Weekends and after hours available</span></li>
       </ul>
-      <a href="assets/appointment-form.pdf" download class="btn btn-white"><svg><use href="#i-book"/></svg>Download appointment form</a>
       <div class="contact-art"><img src="assets/illustrations/contact.svg" alt="" loading="lazy"></div>
     </div>
-    <!-- OWNER: this form opens the visitor's email app. For direct submissions, point action= at a form service (e.g. Formspree) and remove the script handler. -->
-    <form class="quote reveal" id="quoteForm" novalidate>
-      <h3>How can we help?</h3>
-      <div class="seg" role="radiogroup" aria-label="Request type">
-        <label><input type="radio" name="kind" value="Appointment" checked><span>Book an appointment</span></label>
-        <label><input type="radio" name="kind" value="Quote"><span>Get a quote</span></label>
+    <div class="panel reveal">
+      <div class="seg" role="tablist" aria-label="Request type">
+        <button type="button" role="tab" id="tab-book" aria-selected="true" aria-controls="pane-book">Book an appointment</button>
+        <button type="button" role="tab" id="tab-quote" aria-selected="false" aria-controls="pane-quote" tabindex="-1">Get a quote</button>
       </div>
-      <div class="form-row">
+      <div id="pane-book" role="tabpanel" aria-labelledby="tab-book">
+        <!-- Appointment form: Insight Tax Google Form, embedded -->
+        <iframe class="gform" src="https://docs.google.com/forms/d/e/1FAIpQLSe2C-doF60NlEf3s1jZiqP95f9Grcc0jQEr7lWSJMmHqW3D2w/viewform?embedded=true" title="Insight Tax appointment form" loading="lazy">Loading the appointment form...</iframe>
+        <p class="form-foot">Form not showing? <a href="https://docs.google.com/forms/d/e/1FAIpQLSe2C-doF60NlEf3s1jZiqP95f9Grcc0jQEr7lWSJMmHqW3D2w/viewform" target="_blank" rel="noopener">Open the appointment form in a new tab</a>.</p>
+      </div>
+      <!-- OWNER: the quote form opens the visitor's email app. For direct submissions, point action= at a form service (e.g. Formspree) and remove the script handler. -->
+      <form class="quote" id="quoteForm" role="tabpanel" aria-labelledby="tab-quote" hidden novalidate>
+        <div class="form-row">
         <div class="field"><label for="f-name">Full name</label><input id="f-name" name="name" autocomplete="name" required></div>
         <div class="field"><label for="f-phone">Phone</label><input id="f-phone" name="phone" type="tel" autocomplete="tel"></div>
       </div>
@@ -841,28 +990,34 @@ footer a:hover{color:var(--orange)}
       <div class="field">
         <label for="f-service">I need help with</label>
         <select id="f-service" name="service">
-          <option>Individual tax return</option>
-          <option>Business tax return</option>
-          <option>BAS, payroll and super</option>
-          <option>Company, trust, partnership or SMSF</option>
-          <option>Expat or foreign income</option>
-          <option>Rental property or investments</option>
-          <option>Late filings and amendments</option>
-          <option>Xero and tax planning</option>
+          <optgroup label="Individual">
+            <option>Individual tax return</option>
+            <option>Expat or foreign income</option>
+          </optgroup>
+          <optgroup label="Business tax">
+            <option>Business tax return</option>
+            <option>BAS lodgements</option>
+            <option>Cashflow management</option>
+            <option>Payroll and super</option>
+          </optgroup>
+          <optgroup label="Income tax return by structure">
+            <option>Company, trust, partnership or SMSF</option>
+          </optgroup>
+          <optgroup label="Extended support">
+            <option>Tax-saving guidance</option>
+            <option>Late filings</option>
+            <option>Amendments</option>
+            <option>Ad hoc support</option>
+          </optgroup>
           <option>Something else</option>
         </select>
       </div>
-      <div class="form-row" id="apptFields">
-        <div class="field"><label for="f-date">Preferred date</label><input id="f-date" name="date" type="date"></div>
-        <div class="field"><label for="f-time">Preferred time</label>
-          <select id="f-time" name="time"><option>Business hours</option><option>After hours (weekday evening)</option><option>Weekend</option><option>Any time</option></select>
-        </div>
-      </div>
       <div class="field"><label for="f-msg">Anything we should know?</label><textarea id="f-msg" name="message" placeholder="For example: two rental properties, moved from the US in 2024, have a US preparer already."></textarea></div>
-      <button class="btn btn-primary" type="submit" id="submitBtn">Book it now <svg><use href="#i-arrow"/></svg></button>
+      <button class="btn btn-primary" type="submit" id="submitBtn">Get my quote <svg><use href="#i-arrow"/></svg></button>
       <p class="form-foot">Your details stay private and are only used to respond to your request.</p>
       <div class="form-ok" id="formOk" role="status">Thanks. Your email app should now be open with your request ready to send. Prefer to talk? Call 0403 974 718.</div>
-    </form>
+      </form>
+    </div>
   </div>
 </section>
 
@@ -878,11 +1033,11 @@ footer a:hover{color:var(--orange)}
       <div>
         <h4>Services</h4>
         <ul>
-          <li><a href="#services">Individual tax returns</a></li>
-          <li><a href="#services">Business tax returns</a></li>
+          <li><a href="#svc-individual">Individual Tax Return</a></li>
+          <li><a href="#svc-business">Business Tax</a></li>
+          <li><a href="#svc-structures">Income Tax Returns</a></li>
+          <li><a href="#svc-extended">Extended Support</a></li>
           <li><a href="#expats">Expat and foreign income</a></li>
-          <li><a href="#services">BAS, payroll and super</a></li>
-          <li><a href="#services">Late filings and amendments</a></li>
         </ul>
       </div>
       <div>
@@ -892,7 +1047,7 @@ footer a:hover{color:var(--orange)}
           <li><a href="#pricing">Pricing</a></li>
           <li><a href="#team">About us</a></li>
           <li><a href="#faq">FAQ</a></li>
-          <li><a href="assets/appointment-form.pdf" download>Appointment form</a></li>
+          <li><a href="https://docs.google.com/forms/d/e/1FAIpQLSe2C-doF60NlEf3s1jZiqP95f9Grcc0jQEr7lWSJMmHqW3D2w/viewform" target="_blank" rel="noopener">Appointment form</a></li>
         </ul>
       </div>
       <div>
@@ -956,25 +1111,26 @@ footer a:hover{color:var(--orange)}
     var name=form.name.value.trim(),email=form.email.value.trim();
     if(!name){form.name.focus();form.name.setCustomValidity('Please enter your name');form.name.reportValidity();form.name.setCustomValidity('');return}
     if(!email||!/^\S+@\S+\.\S+$/.test(email)){form.email.focus();form.email.setCustomValidity('Please enter a valid email');form.email.reportValidity();form.email.setCustomValidity('');return}
-    var kind=form.querySelector('input[name=kind]:checked').value;
-    var body='Request: '+kind+'\nName: '+name+'\nEmail: '+email+'\nPhone: '+form.phone.value.trim()+'\nService: '+select.value;
-    if(kind==='Appointment'){body+='\nPreferred date: '+(form.date.value||'Flexible')+'\nPreferred time: '+form.time.value}
-    body+='\n\n'+form.message.value.trim();
-    window.location.href='mailto:info@insightax.com.au?subject='+encodeURIComponent(kind+' request: '+select.value)+'&body='+encodeURIComponent(body);
+    var body='Name: '+name+'\nEmail: '+email+'\nPhone: '+form.phone.value.trim()+'\nService: '+select.value+'\n\n'+form.message.value.trim();
+    window.location.href='mailto:info@insightax.com.au?subject='+encodeURIComponent('Quote request: '+select.value)+'&body='+encodeURIComponent(body);
     document.getElementById('formOk').style.display='block';
   });
 
-  var appt=document.getElementById('apptFields'),sub=document.getElementById('submitBtn');
-  form.querySelectorAll('input[name=kind]').forEach(function(r){
-    r.addEventListener('change',function(){
-      var isAppt=r.value==='Appointment'&&r.checked;
-      if(!r.checked)return;
-      appt.style.display=isAppt?'':'none';
-      sub.firstChild.nodeValue=isAppt?'Book it now ':'Get my quote ';
+  var tabs={book:document.getElementById('tab-book'),quote:document.getElementById('tab-quote')};
+  var panes={book:document.getElementById('pane-book'),quote:form};
+  function showTab(k){
+    Object.keys(tabs).forEach(function(t){
+      var on=t===k;
+      tabs[t].setAttribute('aria-selected',on);tabs[t].tabIndex=on?0:-1;panes[t].hidden=!on;
     });
-  });
-  document.querySelectorAll('a[href="#contact"][data-service]').forEach(function(a){
-    a.addEventListener('click',function(){var q=form.querySelector('input[value=Quote]');q.checked=true;q.dispatchEvent(new Event('change'))});
+  }
+  tabs.book.addEventListener('click',function(){showTab('book')});
+  tabs.quote.addEventListener('click',function(){showTab('quote')});
+  [tabs.book,tabs.quote].forEach(function(t){t.addEventListener('keydown',function(e){
+    if(e.key==='ArrowRight'||e.key==='ArrowLeft'){var k=t===tabs.book?'quote':'book';showTab(k);tabs[k].focus()}
+  })});
+  document.querySelectorAll('a[href="#contact"][data-service], #pickerGo').forEach(function(a){
+    a.addEventListener('click',function(){showTab('quote')});
   });
   document.getElementById('yr').textContent=new Date().getFullYear();
 
