@@ -23,7 +23,7 @@ Single-page site for Insight Tax (insightax.com.au), Robert Avey, CPA and Regist
 8. Expat section: confirm the practice is comfortable advertising foreign income and residency work.
 
 ## Design notes
-Structure and feel follow the Bright!Tax homepage pattern: navy and orange palette, deadline banner, quote-first hero, trust strip, services grid, how-it-works steps, pricing cards, reviews, team, FAQ and quote form. The Insight Tax name, logo, copy and illustrations are original. Copy draws on the existing insightax.com.au content (tagline, Affordable / Fast Turnaround / Problem Free, services, extended support, about text). Services are grouped as on the current site: 01 Individual Tax Return, 02 Business Tax, 03 Income Tax Returns by structure, 04 Extended Support.
+Structure and feel follow the Bright!Tax homepage pattern: navy and orange palette, deadline banner, quote-first hero, trust strip, services grid, how-it-works steps, pricing cards, reviews, team, FAQ and quote form. The logo, badges and photo are the practice's own; the copy, layout and illustrations do not copy Bright!Tax material. Copy draws on the existing insightax.com.au content (tagline, Affordable / Fast Turnaround / Problem Free, services, extended support, about text). Services are grouped as on the current site: 01 Individual Tax Return, 02 Business Tax, 03 Income Tax Returns by structure, 04 Extended Support.
 
 ## Illustration licence
 Files in `assets/illustrations/` are from unDraw (undraw.co) by Katerina Limpitsouni, sourced via the `undraw-svg` npm package. The unDraw licence allows free commercial use on websites without attribution; a courtesy credit is included in the footer anyway. It does not allow repackaging them into a competing illustration library.
